@@ -15,7 +15,7 @@
  */
 package groovy.tree;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import org.codehaus.groovy.classgen.TestSupport;
 
 import java.util.logging.Logger;
@@ -27,32 +27,32 @@ import java.util.logging.Logger;
 public class NodePrinterTest extends TestSupport {
 
     public void testTree() throws Exception {
-        GroovyObject object = compile("src/test/groovy/tree/TreeTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/tree/TreeTest.groovy");
         object.invokeMethod("testTree", null);
     }
 
     public void testVerboseTree() throws Exception {
-        GroovyObject object = compile("src/test/groovy/tree/VerboseTreeTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/tree/VerboseTreeTest.groovy");
         object.invokeMethod("testTree", null);
     }
 
     public void testSmallTree() throws Exception {
-        GroovyObject object = compile("src/test/groovy/tree/SmallTreeTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/tree/SmallTreeTest.groovy");
         object.invokeMethod("testTree", null);
     }
 
     public void testLittleClosure() throws Exception {
-        GroovyObject object = compile("src/test/groovy/LittleClosureTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/LittleClosureTest.groovy");
         object.invokeMethod("testClosure", null);
     }
 
     public void testNestedClosureBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/tree/NestedClosureBugTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/tree/NestedClosureBugTest.groovy");
         object.invokeMethod("testNestedClosureBug", null);
     }
 
     public void testClosureClassLoaderBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/tree/ClosureClassLoaderBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/tree/ClosureClassLoaderBug.groovy");
         object.invokeMethod("testTree", null);
     }
 

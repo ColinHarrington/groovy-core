@@ -23,12 +23,12 @@ import org.codehaus.groovy.runtime.InvokerHelper;
  * @author <a href="mailto:james@coredevelopers.net">James Strachan</a>
  * @version $Revision$
  */
-public abstract class GroovyObjectSupport implements GroovyObject {
+public abstract class GroovyMotherOfAllObjectsSupport implements GroovyMotherOfAllObjects {
 
     // never persist the MetaClass
     private transient MetaClass metaClass;
 
-    public GroovyObjectSupport() {
+    public GroovyMotherOfAllObjectsSupport() {
         this.metaClass = InvokerHelper.getMetaClass(this.getClass());
     }
 

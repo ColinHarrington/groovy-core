@@ -16,7 +16,7 @@
 package groovy.sql;
 
 import groovy.lang.Closure;
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +30,7 @@ import java.util.Map;
  * @author Chris Stevenson
  * @version $Revision$
  */
-public interface GroovyResultSet extends GroovyObject, ResultSet {
+public interface GroovyResultSet extends GroovyMotherOfAllObjects, ResultSet {
     /**
      * Supports integer-based subscript operators for accessing at numbered columns
      * starting at zero. Negative indices are supported, they will count from the last column backwards.

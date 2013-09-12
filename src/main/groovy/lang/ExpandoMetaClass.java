@@ -255,7 +255,7 @@ import org.codehaus.groovy.util.FastArray;
  * @author Graeme Rocher
  * @since 1.5
  */
-public class ExpandoMetaClass extends MetaClassImpl implements GroovyObject {
+public class ExpandoMetaClass extends MetaClassImpl implements GroovyMotherOfAllObjects {
 
     private static final String META_CLASS = "metaClass";
     private static final String CLASS = "class";
@@ -564,7 +564,7 @@ public class ExpandoMetaClass extends MetaClassImpl implements GroovyObject {
      *
      * @author Graeme Rocher
      */
-    protected class ExpandoMetaProperty extends GroovyObjectSupport {
+    protected class ExpandoMetaProperty extends GroovyMotherOfAllObjectsSupport {
 
         protected String propertyName;
         protected boolean isStatic;
@@ -680,7 +680,7 @@ public class ExpandoMetaClass extends MetaClassImpl implements GroovyObject {
      *
      * @author Graeme Rocher
      */
-    protected class ExpandoMetaConstructor extends GroovyObjectSupport {
+    protected class ExpandoMetaConstructor extends GroovyMotherOfAllObjectsSupport {
         public Object leftShift(Closure c) {
             if (c != null) {
                 final List<MetaMethod> list = ClosureMetaMethod.createMethodList(GROOVY_CONSTRUCTOR, theClass, c);
@@ -1324,7 +1324,7 @@ public class ExpandoMetaClass extends MetaClassImpl implements GroovyObject {
         return super.createConstructorSite(site, args);
     }
 
-    private class SubClassDefiningClosure extends GroovyObjectSupport {
+    private class SubClassDefiningClosure extends GroovyMotherOfAllObjectsSupport {
         private final Class klazz;
 
         public SubClassDefiningClosure(Class klazz) {
@@ -1344,7 +1344,7 @@ public class ExpandoMetaClass extends MetaClassImpl implements GroovyObject {
         }
     }
 
-    private class DefiningClosure extends GroovyObjectSupport {
+    private class DefiningClosure extends GroovyMotherOfAllObjectsSupport {
         boolean definition = true;
 
         public void mixin(Class category) {
@@ -1439,7 +1439,7 @@ public class ExpandoMetaClass extends MetaClassImpl implements GroovyObject {
 
         public Object getAt(Class key) {
             if (key.isAssignableFrom(object.getClass())) {
-                return new GroovyObjectSupport() {
+                return new GroovyMotherOfAllObjectsSupport() {
                     {
                         final MetaClass ownMetaClass = InvokerHelper.getMetaClass(object.getClass());
                         setMetaClass(new OwnedMetaClass(ownMetaClass) {
@@ -1457,7 +1457,7 @@ public class ExpandoMetaClass extends MetaClassImpl implements GroovyObject {
 
             for (final MixinInMetaClass mixin : mixinClasses) {
                 if (key.isAssignableFrom(mixin.getMixinClass().getTheClass())) {
-                    return new GroovyObjectSupport() {
+                    return new GroovyMotherOfAllObjectsSupport() {
                         {
                             final Object mixedInInstance = mixin.getMixinInstance(object);
                             setMetaClass(new OwnedMetaClass(InvokerHelper.getMetaClass(mixedInInstance)) {

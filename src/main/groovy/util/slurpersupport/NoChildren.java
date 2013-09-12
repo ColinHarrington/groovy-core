@@ -16,7 +16,7 @@
 package groovy.util.slurpersupport;
 
 import groovy.lang.Closure;
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.GroovyRuntimeException;
 
 import java.io.IOException;
@@ -118,7 +118,7 @@ public class NoChildren extends GPathResult {
     /* (non-Javadoc)
     * @see org.codehaus.groovy.sandbox.markup.Buildable#build(groovy.lang.GroovyObject)
     */
-    public void build(final GroovyObject builder) {
+    public void build(final GroovyMotherOfAllObjects builder) {
     }
 
     protected void replaceNode(final Closure newValue) {

@@ -15,7 +15,7 @@
  */
 package groovy.sql;
 
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 import groovy.lang.MissingPropertyException;
 
 import java.util.Collection;
@@ -31,7 +31,7 @@ import java.util.Set;
  * @version $Revision$
  * @author Jean-Louis Berliet
  */
-public class GroovyRowResult extends GroovyObjectSupport implements Map {
+public class GroovyRowResult extends GroovyMotherOfAllObjectsSupport implements Map {
 
     private final Map result;
 

@@ -15,7 +15,7 @@
  */
 package org.codehaus.groovy.classgen;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 
 /**
  * @author <a href="mailto:james@coredevelopers.net">James Strachan</a>
@@ -24,54 +24,54 @@ import groovy.lang.GroovyObject;
 public class RunClosureTest extends TestSupport {
 
     public void testClosure() throws Exception {
-        GroovyObject object = compile("src/test/groovy/ClosureUsingOuterVariablesTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/ClosureUsingOuterVariablesTest.groovy");
         object.invokeMethod("testExampleUseOfClosureScopesUsingEach", null);
     }
 
     public void testStaticClosureBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/StaticClosurePropertyBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/StaticClosurePropertyBug.groovy");
         object.invokeMethod("testCallStaticClosure", null);
     }
 
     public void testZoharsBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/ZoharsBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/ZoharsBug.groovy");
         object.invokeMethod("testBug", null);
     }
 
     public void testBytecodeBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/BytecodeBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/BytecodeBug.groovy");
         object.invokeMethod("testTedsBytecodeBug", null);
     }
 
     public void testBytecode2Bug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/Bytecode2Bug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/Bytecode2Bug.groovy");
         object.invokeMethod("testTedsBytecodeBug", null);
     }
 
     public void testBytecode3Bug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/Bytecode3Bug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/Bytecode3Bug.groovy");
         //object.invokeMethod("testInject", null);
         object.invokeMethod("testIncrementPropertyInclosure", null);
     }
 
     public void testBytecode4Bug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/Bytecode4Bug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/Bytecode4Bug.groovy");
         object.invokeMethod("testInject", null);
         object.invokeMethod("testUsingProperty", null);
     }
 
     public void testBytecode5Bug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/Bytecode5Bug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/Bytecode5Bug.groovy");
         object.invokeMethod("testUsingLocalVar", null);
     }
 
     public void testBytecode6Bug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/Bytecode6Bug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/Bytecode6Bug.groovy");
         object.invokeMethod("testPreFixReturn", null);
     }
 
     public void testPropertyTest() throws Exception {
-        GroovyObject object = compile("src/test/groovy/PropertyTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/PropertyTest.groovy");
         object.invokeMethod("testNormalPropertyGettersAndSetters", null);
     }
 

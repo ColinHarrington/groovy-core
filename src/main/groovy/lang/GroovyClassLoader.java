@@ -596,7 +596,7 @@ public class GroovyClassLoader extends URLClassLoader {
         if (cls.getClassLoader() == this) return false;
         if (recompile == null && !config.getRecompileGroovySource()) return false;
         if (recompile != null && !recompile) return false;
-        if (!GroovyObject.class.isAssignableFrom(cls)) return false;
+        if (!GroovyMotherOfAllObjects.class.isAssignableFrom(cls)) return false;
         long timestamp = getTimeStamp(cls);
         if (timestamp == Long.MAX_VALUE) return false;
         return true;

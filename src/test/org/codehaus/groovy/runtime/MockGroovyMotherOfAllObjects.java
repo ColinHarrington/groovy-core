@@ -16,7 +16,7 @@
 package org.codehaus.groovy.runtime;
 
 import groovy.lang.Closure;
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 
 /**
  * A POGO used by the test cases
@@ -24,7 +24,7 @@ import groovy.lang.GroovyObjectSupport;
  * @author <a href="mailto:james@coredevelopers.net">James Strachan</a>
  * @version $Revision$
  */
-public class MockGroovyObject extends GroovyObjectSupport {
+public class MockGroovyMotherOfAllObjects extends GroovyMotherOfAllObjectsSupport {
 
     public Object methodThatFails() {
         return invokeMethod("nonExistentMethod", "hello");

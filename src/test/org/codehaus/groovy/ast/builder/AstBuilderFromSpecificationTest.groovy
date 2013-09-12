@@ -1452,13 +1452,13 @@ public class AstBuilderFromSpecificationTest extends GroovyTestCase {
                 classNode 'Foo', ACC_PUBLIC, {
                     classNode Object        //superclass
                     interfaces {
-                        classNode GroovyObject
+                        classNode GroovyMotherOfAllObjects
                     }
                     mixins {}
                 }
                 classNode Object            //superclass
                 interfaces {
-                    classNode GroovyObject
+                    classNode GroovyMotherOfAllObjects
                 }
                 mixins {}
             }
@@ -1469,13 +1469,13 @@ public class AstBuilderFromSpecificationTest extends GroovyTestCase {
                         "Foo",
                         ACC_PUBLIC,
                         ClassHelper.make(Object, false),
-                        [ClassHelper.make(GroovyObject, false)] as ClassNode[],
+                        [ClassHelper.make(GroovyMotherOfAllObjects, false)] as ClassNode[],
                         [] as MixinNode[]
                 ),
                 'Foo$Bar',
                 ACC_PUBLIC,
                 ClassHelper.make(Object, false),
-                [ClassHelper.make(GroovyObject, false)] as ClassNode[],
+                [ClassHelper.make(GroovyMotherOfAllObjects, false)] as ClassNode[],
                 [] as MixinNode[]
         )
 
@@ -1527,7 +1527,7 @@ public class AstBuilderFromSpecificationTest extends GroovyTestCase {
             classNode 'MyClass', ACC_PUBLIC, {
                 classNode Object        //superclass
                 interfaces {
-                    classNode GroovyObject
+                    classNode GroovyMotherOfAllObjects
                 }
                 mixins {}
                 genericsTypes {
@@ -1561,7 +1561,7 @@ public class AstBuilderFromSpecificationTest extends GroovyTestCase {
             classNode 'MyClass', ACC_PUBLIC, {
                 classNode Object        //superclass
                 interfaces {
-                    classNode GroovyObject
+                    classNode GroovyMotherOfAllObjects
                 }
                 mixins {}
                 genericsTypes {
@@ -1692,7 +1692,7 @@ public class AstBuilderFromSpecificationTest extends GroovyTestCase {
             classNode 'MyClass', ACC_PUBLIC, {
                 classNode Object        //superclass
                 interfaces {
-                    classNode GroovyObject
+                    classNode GroovyMotherOfAllObjects
                 }
                 mixins {
                     mixin "ClassA", ACC_PUBLIC, {
@@ -1701,7 +1701,7 @@ public class AstBuilderFromSpecificationTest extends GroovyTestCase {
                     mixin "ClassB", ACC_PUBLIC, {
                         classNode String
                         interfaces {
-                            classNode GroovyObject
+                            classNode GroovyMotherOfAllObjects
                         }
                     }
                 }
@@ -1711,14 +1711,14 @@ public class AstBuilderFromSpecificationTest extends GroovyTestCase {
         def expected = new ClassNode(
                 "MyClass", ACC_PUBLIC,
                 ClassHelper.make(Object, false),
-                [ClassHelper.make(GroovyObject, false)] as ClassNode[],
+                [ClassHelper.make(GroovyMotherOfAllObjects, false)] as ClassNode[],
                 [
                         new MixinNode("ClassA", ACC_PUBLIC, ClassHelper.make(String, false)),
                         new MixinNode(
                                 "ClassB",
                                 ACC_PUBLIC,
                                 ClassHelper.make(String, false),
-                                [ClassHelper.make(GroovyObject, false)] as ClassNode[]), // interfaces
+                                [ClassHelper.make(GroovyMotherOfAllObjects, false)] as ClassNode[]), // interfaces
                 ] as MixinNode[]
         )
 

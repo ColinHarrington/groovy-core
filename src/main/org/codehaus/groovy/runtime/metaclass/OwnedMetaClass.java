@@ -204,7 +204,7 @@ public abstract class OwnedMetaClass extends DelegatingMetaClass {
     public boolean isGroovyObject() {
         final Object owner = getOwner();
         final MetaClass ownerMetaClass = getOwnerMetaClass(owner);
-        return GroovyObject.class.isAssignableFrom(ownerMetaClass.getTheClass());
+        return GroovyMotherOfAllObjects.class.isAssignableFrom(ownerMetaClass.getTheClass());
     }
 
     public void setAttribute(Class sender, Object receiver, String messageName, Object messageValue, boolean useSuper, boolean fromInsideClass) {

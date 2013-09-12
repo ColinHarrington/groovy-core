@@ -18,7 +18,7 @@
 package gls.ch06.s05.testClasses;
 
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.MetaClass;
 import org.codehaus.groovy.runtime.InvokerHelper;
 
@@ -26,7 +26,7 @@ import org.codehaus.groovy.runtime.InvokerHelper;
  * @author John Wilson
  */
 
-public class Tt1cgi extends Tt1c implements GroovyObject {
+public class Tt1cgi extends Tt1c implements GroovyMotherOfAllObjects {
 
     private MetaClass metaClass = InvokerHelper.getMetaClass(getClass());
 

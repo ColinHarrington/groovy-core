@@ -119,13 +119,13 @@ public class InvokerHelper {
 
     public static Object getAttribute(Object object, String attribute) {
         if (object == null) {
-            object = NullObject.getNullObject();
+            object = NullMotherOfAllObjects.getNullObject();
         }
 
         if (object instanceof Class) {
             return metaRegistry.getMetaClass((Class) object).getAttribute(object, attribute);
-        } else if (object instanceof GroovyObject) {
-            return ((GroovyObject) object).getMetaClass().getAttribute(object, attribute);
+        } else if (object instanceof GroovyMotherOfAllObjects) {
+            return ((GroovyMotherOfAllObjects) object).getMetaClass().getAttribute(object, attribute);
         } else {
             return metaRegistry.getMetaClass(object.getClass()).getAttribute(object, attribute);
         }
@@ -133,13 +133,13 @@ public class InvokerHelper {
 
     public static void setAttribute(Object object, String attribute, Object newValue) {
         if (object == null) {
-            object = NullObject.getNullObject();
+            object = NullMotherOfAllObjects.getNullObject();
         }
 
         if (object instanceof Class) {
             metaRegistry.getMetaClass((Class) object).setAttribute(object, attribute, newValue);
-        } else if (object instanceof GroovyObject) {
-            ((GroovyObject) object).getMetaClass().setAttribute(object, attribute, newValue);
+        } else if (object instanceof GroovyMotherOfAllObjects) {
+            ((GroovyMotherOfAllObjects) object).getMetaClass().setAttribute(object, attribute, newValue);
         } else {
             metaRegistry.getMetaClass(object.getClass()).setAttribute(object, attribute, newValue);
         }
@@ -147,11 +147,11 @@ public class InvokerHelper {
 
     public static Object getProperty(Object object, String property) {
         if (object == null) {
-            object = NullObject.getNullObject();
+            object = NullMotherOfAllObjects.getNullObject();
         }
 
-        if (object instanceof GroovyObject) {
-            GroovyObject pogo = (GroovyObject) object;
+        if (object instanceof GroovyMotherOfAllObjects) {
+            GroovyMotherOfAllObjects pogo = (GroovyMotherOfAllObjects) object;
             return pogo.getProperty(property);
         } else if (object instanceof Class) {
             Class c = (Class) object;
@@ -170,11 +170,11 @@ public class InvokerHelper {
 
     public static void setProperty(Object object, String property, Object newValue) {
         if (object == null) {
-            object = NullObject.getNullObject();
+            object = NullMotherOfAllObjects.getNullObject();
         }
 
-        if (object instanceof GroovyObject) {
-            GroovyObject pogo = (GroovyObject) object;
+        if (object instanceof GroovyMotherOfAllObjects) {
+            GroovyMotherOfAllObjects pogo = (GroovyMotherOfAllObjects) object;
             pogo.setProperty(property, newValue);
         } else if (object instanceof Class) {
             metaRegistry.getMetaClass((Class) object).setProperty((Class) object, property, newValue);
@@ -196,11 +196,11 @@ public class InvokerHelper {
      * This is so we don't have to reorder the stack when we call this method.
      * At some point a better name might be in order.
      */
-    public static void setGroovyObjectProperty(Object newValue, GroovyObject object, String property) {
+    public static void setGroovyObjectProperty(Object newValue, GroovyMotherOfAllObjects object, String property) {
         object.setProperty(property, newValue);
     }
 
-    public static Object getGroovyObjectProperty(GroovyObject object, String property) {
+    public static Object getGroovyObjectProperty(GroovyMotherOfAllObjects object, String property) {
         return object.getProperty(property);
     }
 
@@ -404,7 +404,7 @@ public class InvokerHelper {
             };
         } else {
             try {
-                final GroovyObject object = (GroovyObject) scriptClass
+                final GroovyMotherOfAllObjects object = (GroovyMotherOfAllObjects) scriptClass
                         .newInstance();
                 if (object instanceof Script) {
                     script = (Script) object;
@@ -498,7 +498,7 @@ public class InvokerHelper {
 
     public static String format(Object arguments, boolean verbose, int maxSize) {
         if (arguments == null) {
-            final NullObject nullObject = NullObject.getNullObject();
+            final NullMotherOfAllObjects nullObject = NullMotherOfAllObjects.getNullObject();
             return (String) nullObject.getMetaClass().invokeMethod(nullObject, "toString", EMPTY_ARGS);
         }
         if (arguments.getClass().isArray()) {
@@ -733,8 +733,8 @@ public class InvokerHelper {
     }
 
     public static MetaClass getMetaClass(Object object) {
-        if (object instanceof GroovyObject)
-            return ((GroovyObject) object).getMetaClass();
+        if (object instanceof GroovyMotherOfAllObjects)
+            return ((GroovyMotherOfAllObjects) object).getMetaClass();
         else
             return ((MetaClassRegistryImpl) GroovySystem.getMetaClassRegistry()).getMetaClass(object);
     }
@@ -748,7 +748,7 @@ public class InvokerHelper {
      */
     public static Object invokeMethod(Object object, String methodName, Object arguments) {
         if (object == null) {
-            object = NullObject.getNullObject();
+            object = NullMotherOfAllObjects.getNullObject();
             //throw new NullPointerException("Cannot invoke method " + methodName + "() on null object");
         }
 
@@ -760,7 +760,7 @@ public class InvokerHelper {
         }
 
         // it's an instance; check if it's a Java one
-        if (!(object instanceof GroovyObject)) {
+        if (!(object instanceof GroovyMotherOfAllObjects)) {
             return invokePojoMethod(object, methodName, arguments);
         }
 
@@ -774,7 +774,7 @@ public class InvokerHelper {
     }
 
     static Object invokePogoMethod(Object object, String methodName, Object arguments) {
-        GroovyObject groovy = (GroovyObject) object;
+        GroovyMotherOfAllObjects groovy = (GroovyMotherOfAllObjects) object;
         boolean intercepting = groovy instanceof GroovyInterceptable;
         try {
             // if it's a pure interceptable object (even intercepting toString(), clone(), ...)

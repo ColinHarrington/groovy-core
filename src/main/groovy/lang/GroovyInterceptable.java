@@ -21,5 +21,5 @@ package groovy.lang;
  *
  * @author Guillaume Laforge
  */
-public interface GroovyInterceptable extends GroovyObject {
+public interface GroovyInterceptable extends GroovyMotherOfAllObjects {
 }

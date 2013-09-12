@@ -18,13 +18,13 @@
 package gls.ch06.s05.testClasses;
 
 
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 
 /**
  * @author John Wilson
  */
 
-public class Tt1go extends GroovyObjectSupport {
+public class Tt1go extends GroovyMotherOfAllObjectsSupport {
     public String x = "field";
 
     public String getX() {

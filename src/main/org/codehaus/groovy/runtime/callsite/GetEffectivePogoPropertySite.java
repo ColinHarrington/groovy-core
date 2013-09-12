@@ -18,7 +18,7 @@ package org.codehaus.groovy.runtime.callsite;
 import groovy.lang.GroovyRuntimeException;
 import groovy.lang.MetaClass;
 import groovy.lang.MetaProperty;
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import org.codehaus.groovy.runtime.GroovyCategorySupport;
 import org.codehaus.groovy.runtime.ScriptBytecodeAdapter;
 
@@ -40,7 +40,7 @@ class GetEffectivePogoPropertySite extends AbstractCallSite {
     }
 
     public final Object callGetProperty (Object receiver) throws Throwable {
-        if (GroovyCategorySupport.hasCategoryInCurrentThread() || !(receiver instanceof GroovyObject) || ((GroovyObject) receiver).getMetaClass() != metaClass) {
+        if (GroovyCategorySupport.hasCategoryInCurrentThread() || !(receiver instanceof GroovyMotherOfAllObjects) || ((GroovyMotherOfAllObjects) receiver).getMetaClass() != metaClass) {
             return createGetPropertySite(receiver).getProperty(receiver);
         } else {
             try {
@@ -52,7 +52,7 @@ class GetEffectivePogoPropertySite extends AbstractCallSite {
     }
 
     public final CallSite acceptGetProperty(Object receiver) {
-        if (GroovyCategorySupport.hasCategoryInCurrentThread() || !(receiver instanceof GroovyObject) || ((GroovyObject)receiver).getMetaClass() != metaClass) {
+        if (GroovyCategorySupport.hasCategoryInCurrentThread() || !(receiver instanceof GroovyMotherOfAllObjects) || ((GroovyMotherOfAllObjects)receiver).getMetaClass() != metaClass) {
             return createGetPropertySite(receiver);
         } else {
             return this;
@@ -60,7 +60,7 @@ class GetEffectivePogoPropertySite extends AbstractCallSite {
     }
 
     public final Object callGroovyObjectGetProperty (Object receiver) throws Throwable {
-        if (GroovyCategorySupport.hasCategoryInCurrentThread() || !(receiver instanceof GroovyObject) || ((GroovyObject) receiver).getMetaClass() != metaClass) {
+        if (GroovyCategorySupport.hasCategoryInCurrentThread() || !(receiver instanceof GroovyMotherOfAllObjects) || ((GroovyMotherOfAllObjects) receiver).getMetaClass() != metaClass) {
             return createGetPropertySite(receiver).getProperty(receiver);
         } else {
             try {
@@ -72,7 +72,7 @@ class GetEffectivePogoPropertySite extends AbstractCallSite {
     }
 
     public final CallSite acceptGroovyObjectGetProperty(Object receiver) {
-        if (GroovyCategorySupport.hasCategoryInCurrentThread() || !(receiver instanceof GroovyObject) || ((GroovyObject)receiver).getMetaClass() != metaClass) {
+        if (GroovyCategorySupport.hasCategoryInCurrentThread() || !(receiver instanceof GroovyMotherOfAllObjects) || ((GroovyMotherOfAllObjects)receiver).getMetaClass() != metaClass) {
             return createGroovyObjectGetPropertySite(receiver);
         } else {
             return this;

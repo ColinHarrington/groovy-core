@@ -15,7 +15,7 @@
  */
 package groovy.swing;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.GroovyCodeSource;
 import groovy.lang.GroovyClassLoader;
 import groovy.util.GroovyTestCase;
@@ -40,13 +40,13 @@ public class Demo extends GroovyTestCase {
 
     public static void main(String[] args) throws Exception {
         Demo demo = new Demo();
-        GroovyObject object = demo.compile("src/examples/groovy/swing/SwingDemo.groovy");
+        GroovyMotherOfAllObjects object = demo.compile("src/examples/groovy/swing/SwingDemo.groovy");
         object.invokeMethod("run", null);
     }
 
-    protected GroovyObject compile(String fileName) throws Exception {
+    protected GroovyMotherOfAllObjects compile(String fileName) throws Exception {
         Class groovyClass = loader.parseClass(new GroovyCodeSource(new File(fileName)));
-        GroovyObject object = (GroovyObject) groovyClass.newInstance();
+        GroovyMotherOfAllObjects object = (GroovyMotherOfAllObjects) groovyClass.newInstance();
         assertTrue(object != null);
         return object;
     }

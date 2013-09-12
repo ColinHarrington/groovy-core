@@ -167,10 +167,10 @@ public class TestSupport extends GroovyTestCase implements Opcodes {
         script.run();
     }
 
-    protected GroovyObject compile(String fileName) throws Exception {
+    protected GroovyMotherOfAllObjects compile(String fileName) throws Exception {
         Class groovyClass = loader.parseClass(new GroovyCodeSource(new File(fileName)));
 
-        GroovyObject object = (GroovyObject) groovyClass.newInstance();
+        GroovyMotherOfAllObjects object = (GroovyMotherOfAllObjects) groovyClass.newInstance();
 
         assertTrue(object != null);
 

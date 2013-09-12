@@ -76,7 +76,6 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.Proxy;
 import java.net.URL;
 import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
 import java.util.ArrayList;
@@ -164,7 +163,7 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
     public MetaClassImpl(final Class theClass, MetaMethod [] add) {
         this.theClass = theClass;
         theCachedClass = ReflectionCache.getCachedClass(theClass);
-        this.isGroovyObject = GroovyObject.class.isAssignableFrom(theClass);
+        this.isGroovyObject = GroovyMotherOfAllObjects.class.isAssignableFrom(theClass);
         this.isMap = Map.class.isAssignableFrom(theClass);
         this.registry = GroovySystem.getMetaClassRegistry();
         metaMethodIndex = new MetaMethodIndex(theCachedClass);
@@ -584,7 +583,7 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
         Iterator iter = superClasses.iterator();
         for (; iter.hasNext();) {
             CachedClass c = (CachedClass) iter.next();
-            if (GroovyObject.class.isAssignableFrom(c.getTheClass())) {
+            if (GroovyMotherOfAllObjects.class.isAssignableFrom(c.getTheClass())) {
               firstGroovy = c;
               break;
             }
@@ -593,7 +592,7 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
         if (firstGroovy == null)
           firstGroovy = theCachedClass;
         else {
-            if (firstGroovy.getTheClass() == GroovyObjectSupport.class && iter.hasNext()) {
+            if (firstGroovy.getTheClass() == GroovyMotherOfAllObjectsSupport.class && iter.hasNext()) {
                 firstGroovy = (CachedClass) iter.next();
                 if (firstGroovy.getTheClass() == Closure.class && iter.hasNext()) {
                     firstGroovy = (CachedClass) iter.next();
@@ -601,7 +600,7 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
             }
         }
 
-        return GroovyObject.class.isAssignableFrom(firstGroovy.getTheClass()) ? firstGroovy.getCachedSuperClass() : firstGroovy;
+        return GroovyMotherOfAllObjects.class.isAssignableFrom(firstGroovy.getTheClass()) ? firstGroovy.getCachedSuperClass() : firstGroovy;
     }
 
     /**
@@ -946,7 +945,7 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
                         method = delegateMetaClass.pickMethod(methodName, argClasses);
                         if (method != null)
                             return delegateMetaClass.invokeMethod(delegate, methodName, originalArguments);
-                        else if (delegate != closure && (delegate instanceof GroovyObject)) {
+                        else if (delegate != closure && (delegate instanceof GroovyMotherOfAllObjects)) {
                             return invokeMethodOnGroovyObject(methodName, originalArguments, delegate);
                         }
                     }
@@ -973,14 +972,14 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
                         // still no methods found, test if delegate or owner are GroovyObjects
                         // and invoke the method on them if so.
                         MissingMethodException last = null;
-                        if (delegate != closure && (delegate instanceof GroovyObject)) {
+                        if (delegate != closure && (delegate instanceof GroovyMotherOfAllObjects)) {
                             try {
                                 return invokeMethodOnGroovyObject(methodName, originalArguments, delegate);
                             } catch (MissingMethodException mme) {
                                 if (last == null) last = mme;
                             }
                         }
-                        if (isClosureNotOwner && (owner instanceof GroovyObject)) {
+                        if (isClosureNotOwner && (owner instanceof GroovyMotherOfAllObjects)) {
                             try {
                                 return invokeMethodOnGroovyObject(methodName, originalArguments, owner);
                             } catch (MissingMethodException mme) {
@@ -1007,7 +1006,7 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
                         // still no methods found, test if delegate or owner are GroovyObjects
                         // and invoke the method on them if so.
                         MissingMethodException last = null;
-                        if (isClosureNotOwner && (owner instanceof GroovyObject)) {
+                        if (isClosureNotOwner && (owner instanceof GroovyMotherOfAllObjects)) {
                             try {
                                 return invokeMethodOnGroovyObject(methodName, originalArguments, owner);
                             } catch (MissingMethodException mme) {
@@ -1030,7 +1029,7 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
                                   throw iie;
                             }
                         }
-                        if (delegate != closure && (delegate instanceof GroovyObject)) {
+                        if (delegate != closure && (delegate instanceof GroovyMotherOfAllObjects)) {
                             try {
                                 return invokeMethodOnGroovyObject(methodName, originalArguments, delegate);
                             } catch (MissingMethodException mme) {
@@ -1103,8 +1102,8 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
     }
 
     private MetaClass lookupObjectMetaClass(Object object) {
-        if (object instanceof GroovyObject) {
-            GroovyObject go = (GroovyObject) object;
+        if (object instanceof GroovyMotherOfAllObjects) {
+            GroovyMotherOfAllObjects go = (GroovyMotherOfAllObjects) object;
             return go.getMetaClass();
         }
         Class ownerClass = object.getClass();
@@ -1114,7 +1113,7 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
     }
 
     private Object invokeMethodOnGroovyObject(String methodName, Object[] originalArguments, Object owner) {
-        GroovyObject go = (GroovyObject) owner;
+        GroovyMotherOfAllObjects go = (GroovyMotherOfAllObjects) owner;
         return go.invokeMethod(methodName, originalArguments);
     }
 
@@ -2510,7 +2509,7 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
     }
 
     public ClassNode getClassNode() {
-        if (classNode == null && GroovyObject.class.isAssignableFrom(theClass)) {
+        if (classNode == null && GroovyMotherOfAllObjects.class.isAssignableFrom(theClass)) {
             // let's try load it from the classpath
             String groovyFile = theClass.getName();
             int idx = groovyFile.indexOf('$');
@@ -2598,7 +2597,7 @@ public class MetaClassImpl implements MetaClass, MutableMetaClass {
      * Checks if the metaMethod is a method from the GroovyObject interface such as setProperty, getProperty and invokeMethod
      *
      * @param metaMethod The metaMethod instance
-     * @see GroovyObject
+     * @see GroovyMotherOfAllObjects
      */
     protected final void checkIfGroovyObjectMethod(MetaMethod metaMethod) {
         if (metaMethod instanceof ClosureMetaMethod || metaMethod instanceof MixinInstanceMetaMethod) {

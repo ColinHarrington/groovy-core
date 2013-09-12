@@ -25,7 +25,7 @@ import java.io.Serializable;
  * @author <a href="mailto:james@coredevelopers.net">James Strachan</a>
  * @version $Revision$
  */
-public class Reference<T> extends GroovyObjectSupport implements Serializable {
+public class Reference<T> extends GroovyMotherOfAllObjectsSupport implements Serializable {
 
     private T value;
 

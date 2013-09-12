@@ -21,7 +21,7 @@ import org.codehaus.groovy.runtime.metaclass.MissingMethodExceptionNoStack;
 import org.codehaus.groovy.runtime.metaclass.MissingMethodExecutionFailed;
 import org.codehaus.groovy.runtime.metaclass.MissingPropertyExceptionNoStack;
 import org.codehaus.groovy.runtime.typehandling.DefaultTypeTransformation;
-import org.codehaus.groovy.runtime.wrappers.GroovyObjectWrapper;
+import org.codehaus.groovy.runtime.wrappers.GroovyMotherOfAllObjectsWrapper;
 import org.codehaus.groovy.runtime.wrappers.PojoWrapper;
 import org.codehaus.groovy.runtime.wrappers.Wrapper;
 
@@ -64,7 +64,7 @@ public class ScriptBytecodeAdapter {
     //  --------------------------------------------------------
     //                       methods for this
     //  --------------------------------------------------------
-    public static Object invokeMethodOnCurrentN(Class senderClass, GroovyObject receiver, String messageName, Object[] messageArguments) throws Throwable {
+    public static Object invokeMethodOnCurrentN(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName, Object[] messageArguments) throws Throwable {
         Object result = null;
         boolean intercepting = receiver instanceof GroovyInterceptable;
         try {
@@ -93,11 +93,11 @@ public class ScriptBytecodeAdapter {
         return result;
     }
 
-    public static Object invokeMethodOnCurrentNSafe(Class senderClass, GroovyObject receiver, String messageName, Object[] messageArguments) throws Throwable {
+    public static Object invokeMethodOnCurrentNSafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName, Object[] messageArguments) throws Throwable {
         return invokeMethodOnCurrentN(senderClass, receiver, messageName, messageArguments);
     }
 
-    public static Object invokeMethodOnCurrentNSpreadSafe(Class senderClass, GroovyObject receiver, String messageName, Object[] messageArguments) throws Throwable {
+    public static Object invokeMethodOnCurrentNSpreadSafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName, Object[] messageArguments) throws Throwable {
         List answer = new ArrayList();
         for (Iterator it = InvokerHelper.asIterator(receiver); it.hasNext();) {
             answer.add(invokeMethodNSafe(senderClass, it.next(), messageName, messageArguments));
@@ -105,22 +105,22 @@ public class ScriptBytecodeAdapter {
         return answer;
     }
 
-    public static Object invokeMethodOnCurrent0(Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static Object invokeMethodOnCurrent0(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         return invokeMethodOnCurrentN(senderClass, receiver, messageName, EMPTY_ARGS);
     }
 
-    public static Object invokeMethodOnCurrent0Safe(Class senderClass, GroovyObject receiver, String messageName, Object[] messageArguments) throws Throwable {
+    public static Object invokeMethodOnCurrent0Safe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName, Object[] messageArguments) throws Throwable {
         return invokeMethodOnCurrentNSafe(senderClass, receiver, messageName, EMPTY_ARGS);
     }
 
-    public static Object invokeMethodOnCurrent0SpreadSafe(Class senderClass, GroovyObject receiver, String messageName, Object[] messageArguments) throws Throwable {
+    public static Object invokeMethodOnCurrent0SpreadSafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName, Object[] messageArguments) throws Throwable {
         return invokeMethodOnCurrentNSpreadSafe(senderClass, receiver, messageName, EMPTY_ARGS);
     }
 
     //  --------------------------------------------------------
     //                       methods for super
     //  --------------------------------------------------------
-    public static Object invokeMethodOnSuperN(Class senderClass, GroovyObject receiver, String messageName, Object[] messageArguments) throws Throwable {
+    public static Object invokeMethodOnSuperN(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName, Object[] messageArguments) throws Throwable {
         MetaClass metaClass = receiver.getMetaClass();
         // ignore interception and missing method fallback
         Object result = null;
@@ -132,11 +132,11 @@ public class ScriptBytecodeAdapter {
         return result;
     }
 
-    public static Object invokeMethodOnSuperNSafe(Class senderClass, GroovyObject receiver, String messageName, Object[] messageArguments) throws Throwable {
+    public static Object invokeMethodOnSuperNSafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName, Object[] messageArguments) throws Throwable {
         return invokeMethodOnSuperN(senderClass, receiver, messageName, messageArguments);
     }
 
-    public static Object invokeMethodOnSuperNSpreadSafe(Class senderClass, GroovyObject receiver, String messageName, Object[] messageArguments) throws Throwable {
+    public static Object invokeMethodOnSuperNSpreadSafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName, Object[] messageArguments) throws Throwable {
         List answer = new ArrayList();
         for (Iterator it = InvokerHelper.asIterator(receiver); it.hasNext();) {
             answer.add(invokeMethodNSafe(senderClass, it.next(), messageName, messageArguments));
@@ -144,15 +144,15 @@ public class ScriptBytecodeAdapter {
         return answer;
     }
 
-    public static Object invokeMethodOnSuper0(Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static Object invokeMethodOnSuper0(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         return invokeMethodOnSuperN(senderClass, receiver, messageName, EMPTY_ARGS);
     }
 
-    public static Object invokeMethodOnSuper0Safe(Class senderClass, GroovyObject receiver, String messageName, Object[] messageArguments) throws Throwable {
+    public static Object invokeMethodOnSuper0Safe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName, Object[] messageArguments) throws Throwable {
         return invokeMethodOnSuperNSafe(senderClass, receiver, messageName, EMPTY_ARGS);
     }
 
-    public static Object invokeMethodOnSuper0SpreadSafe(Class senderClass, GroovyObject receiver, String messageName, Object[] messageArguments) throws Throwable {
+    public static Object invokeMethodOnSuper0SpreadSafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName, Object[] messageArguments) throws Throwable {
         return invokeMethodOnSuperNSpreadSafe(senderClass, receiver, messageName, EMPTY_ARGS);
     }
 
@@ -246,7 +246,7 @@ public class ScriptBytecodeAdapter {
             if (receiver instanceof Class) {
                 return InvokerHelper.getAttribute(receiver, messageName);
             } else {
-                MetaClass mc = ((GroovyObject) receiver).getMetaClass();
+                MetaClass mc = ((GroovyMotherOfAllObjects) receiver).getMetaClass();
                 return mc.getAttribute(senderClass, receiver, messageName, true);
             }
         } catch (GroovyRuntimeException gre) {
@@ -275,7 +275,7 @@ public class ScriptBytecodeAdapter {
             if (receiver instanceof Class) {
                 InvokerHelper.setAttribute(receiver, messageName, messageArgument);
             } else {
-                MetaClass mc = ((GroovyObject) receiver).getMetaClass();
+                MetaClass mc = ((GroovyMotherOfAllObjects) receiver).getMetaClass();
                 mc.setAttribute(senderClass, receiver, messageName, messageArgument, true, true);
             }
         } catch (GroovyRuntimeException gre) {
@@ -347,7 +347,7 @@ public class ScriptBytecodeAdapter {
     //              normal GroovyObject field handling : get
     //  --------------------------------------------------------
 
-    public static Object getGroovyObjectField(Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static Object getGroovyObjectField(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         try  {
             return receiver.getMetaClass().getAttribute(receiver, messageName);
         } catch (GroovyRuntimeException gre) {
@@ -355,7 +355,7 @@ public class ScriptBytecodeAdapter {
         }
     }
 
-    public static Object getGroovyObjectFieldSafe(Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static Object getGroovyObjectFieldSafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         if (receiver == null) return null;
         try {
             return receiver.getMetaClass().getAttribute(receiver, messageName);
@@ -364,7 +364,7 @@ public class ScriptBytecodeAdapter {
         }
     }
 
-    public static Object getGroovyObjectFieldSpreadSafe(Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static Object getGroovyObjectFieldSpreadSafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         if (receiver == null) return null;
         List answer = new ArrayList();
         for (Iterator it = InvokerHelper.asIterator(receiver); it.hasNext();) {
@@ -377,7 +377,7 @@ public class ScriptBytecodeAdapter {
     //              normal field handling : set
     //  --------------------------------------------------------
 
-    public static void setGroovyObjectField(Object messageArgument, Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static void setGroovyObjectField(Object messageArgument, Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         try {
             receiver.getMetaClass().setAttribute(receiver, messageName, messageArgument);
         } catch (GroovyRuntimeException gre) {
@@ -385,7 +385,7 @@ public class ScriptBytecodeAdapter {
         }
     }
 
-    public static void setGroovyObjectFieldSafe(Object messageArgument, Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static void setGroovyObjectFieldSafe(Object messageArgument, Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         if (receiver == null) return;
         try {
             receiver.getMetaClass().setAttribute(receiver, messageName, messageArgument);
@@ -394,7 +394,7 @@ public class ScriptBytecodeAdapter {
         }
     }
 
-    public static void setGroovyObjectFieldSpreadSafe(Object messageArgument, Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static void setGroovyObjectFieldSpreadSafe(Object messageArgument, Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         if (receiver == null) return;
         for (Iterator it = InvokerHelper.asIterator(receiver); it.hasNext();) {
             setFieldSafe(messageArgument, senderClass, it.next(), messageName);
@@ -405,15 +405,15 @@ public class ScriptBytecodeAdapter {
     //              Property handling super: get
     //  --------------------------------------------------------
 
-    public static Object getPropertyOnSuper(Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static Object getPropertyOnSuper(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         return invokeMethodOnSuperN(senderClass, receiver, "getProperty", new Object[]{messageName});
     }
 
-    public static Object getPropertyOnSuperSafe(Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static Object getPropertyOnSuperSafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         return getPropertyOnSuper(senderClass, receiver, messageName);
     }
 
-    public static Object getPropertyOnSuperSpreadSafe(Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static Object getPropertyOnSuperSpreadSafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         List answer = new ArrayList();
         for (Iterator it = InvokerHelper.asIterator(receiver); it.hasNext();) {
             answer.add(getPropertySafe(senderClass, it.next(), messageName));
@@ -425,7 +425,7 @@ public class ScriptBytecodeAdapter {
     //              Property handling super: set
     //  --------------------------------------------------------
 
-    public static void setPropertyOnSuper(Object messageArgument, Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static void setPropertyOnSuper(Object messageArgument, Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         try {
             InvokerHelper.setAttribute(receiver, messageName, messageArgument);
         } catch (GroovyRuntimeException gre) {
@@ -433,11 +433,11 @@ public class ScriptBytecodeAdapter {
         }
     }
 
-    public static void setPropertyOnSuperSafe(Object messageArgument, Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static void setPropertyOnSuperSafe(Object messageArgument, Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         setPropertyOnSuper(messageArgument, senderClass, receiver, messageName);
     }
 
-    public static void setPropertyOnSuperSpreadSafe(Object messageArgument, Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static void setPropertyOnSuperSpreadSafe(Object messageArgument, Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         for (Iterator it = InvokerHelper.asIterator(receiver); it.hasNext();) {
             setPropertySafe(messageArgument, senderClass, it.next(), messageName);
         }
@@ -476,7 +476,7 @@ public class ScriptBytecodeAdapter {
 
     public static void setProperty(Object messageArgument, Class senderClass, Object receiver, String messageName) throws Throwable {
         try {
-            if (receiver==null) receiver=NullObject.getNullObject();
+            if (receiver==null) receiver= NullMotherOfAllObjects.getNullObject();
             InvokerHelper.setProperty(receiver, messageName, messageArgument);
         } catch (GroovyRuntimeException gre) {
             throw unwrap(gre);
@@ -500,16 +500,16 @@ public class ScriptBytecodeAdapter {
     //              normal GroovyObject Property handling : get
     //  --------------------------------------------------------
 
-    public static Object getGroovyObjectProperty(Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static Object getGroovyObjectProperty(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         return receiver.getProperty(messageName);
     }
 
-    public static Object getGroovyObjectPropertySafe(Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static Object getGroovyObjectPropertySafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         if (receiver == null) return null;
         return getGroovyObjectProperty(senderClass, receiver, messageName);
     }
 
-    public static Object getGroovyObjectPropertySpreadSafe(Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static Object getGroovyObjectPropertySpreadSafe(Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         if (receiver == null) return null;
 
         List answer = new ArrayList();
@@ -523,7 +523,7 @@ public class ScriptBytecodeAdapter {
     //              normal GroovyObject Property handling : set
     //  --------------------------------------------------------
 
-    public static void setGroovyObjectProperty(Object messageArgument, Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static void setGroovyObjectProperty(Object messageArgument, Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         try {
             receiver.setProperty(messageName, messageArgument);
         } catch (GroovyRuntimeException gre) {
@@ -531,12 +531,12 @@ public class ScriptBytecodeAdapter {
         }
     }
 
-    public static void setGroovyObjectPropertySafe(Object messageArgument, Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static void setGroovyObjectPropertySafe(Object messageArgument, Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         if (receiver == null) return;
         receiver.setProperty(messageName, messageArgument);
     }
 
-    public static void setGroovyObjectPropertySpreadSafe(Object messageArgument, Class senderClass, GroovyObject receiver, String messageName) throws Throwable {
+    public static void setGroovyObjectPropertySpreadSafe(Object messageArgument, Class senderClass, GroovyMotherOfAllObjects receiver, String messageName) throws Throwable {
         if (receiver == null) return;
 
         for (Iterator it = InvokerHelper.asIterator(receiver); it.hasNext();) {
@@ -583,7 +583,7 @@ public class ScriptBytecodeAdapter {
      * @throws Throwable if the coercion fails
      */
     public static Object asType(Object object, Class type) throws Throwable {
-        if (object == null) object = NullObject.getNullObject();
+        if (object == null) object = NullMotherOfAllObjects.getNullObject();
         return invokeMethodN(object.getClass(), object, "asType", new Object[]{type});
     }
 
@@ -611,8 +611,8 @@ public class ScriptBytecodeAdapter {
         return new PojoWrapper(val, clazz);
     }
 
-    public static Wrapper createGroovyObjectWrapper(GroovyObject val, Class clazz) {
-        return new GroovyObjectWrapper(val, clazz);
+    public static Wrapper createGroovyObjectWrapper(GroovyMotherOfAllObjects val, Class clazz) {
+        return new GroovyMotherOfAllObjectsWrapper(val, clazz);
     }
 
     public static Map createMap(Object[] values) {

@@ -40,7 +40,7 @@ import org.codehaus.groovy.runtime.InvokerHelper;
  * @author Scott Vlaminck (http://refactr.com)
  * @author Andres Almiray <aalmiray@users.sourceforge.com>
  */
-public class ObjectGraphBuilder extends FactoryBuilderSupport {
+public class MotherOfAllObjectsGraphBuilder extends FactoryBuilderSupport {
     public static final String NODE_CLASS = "_NODE_CLASS_";
     public static final String NODE_NAME = "_NODE_NAME_";
     public static final String OBJECT_ID = "_OBJECT_ID_";
@@ -68,7 +68,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
     private List<NodeReference> lazyReferences = new ArrayList<NodeReference>();
     private String beanFactoryName = "bean";
 
-    public ObjectGraphBuilder() {
+    public MotherOfAllObjectsGraphBuilder() {
         classNameResolver = new DefaultClassNameResolver();
         newInstanceResolver = new DefaultNewInstanceResolver();
         relationNameResolver = new DefaultRelationNameResolver();
@@ -77,7 +77,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
         referenceResolver = new DefaultReferenceResolver();
 
         addPostNodeCompletionDelegate(new Closure(this, this) {
-            public void doCall(ObjectGraphBuilder builder, Object parent, Object node) {
+            public void doCall(MotherOfAllObjectsGraphBuilder builder, Object parent, Object node) {
                 if (parent == null) {
                     builder.resolveLazyReferences();
                     builder.dispose();
@@ -151,7 +151,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
         if (childPropertySetter instanceof ChildPropertySetter) {
             this.childPropertySetter = (ChildPropertySetter) childPropertySetter;
         } else if (childPropertySetter instanceof Closure) {
-            final ObjectGraphBuilder self = this;
+            final MotherOfAllObjectsGraphBuilder self = this;
             this.childPropertySetter = new ChildPropertySetter() {
                 public void setChild(Object parent, Object child, String parentName,
                                      String propertyName) {
@@ -187,7 +187,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
                 }
             };
         } else if (classNameResolver instanceof Closure) {
-            final ObjectGraphBuilder self = this;
+            final MotherOfAllObjectsGraphBuilder self = this;
             this.classNameResolver = new ClassNameResolver() {
                 public String resolveClassname(String classname) {
                     Closure cls = (Closure) classNameResolver;
@@ -235,7 +235,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
                 }
             };
         } else if (identifierResolver instanceof Closure) {
-            final ObjectGraphBuilder self = this;
+            final MotherOfAllObjectsGraphBuilder self = this;
             this.identifierResolver = new IdentifierResolver() {
                 public String getIdentifierFor(String nodeName) {
                     Closure cls = (Closure) identifierResolver;
@@ -264,7 +264,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
         if (newInstanceResolver instanceof NewInstanceResolver) {
             this.newInstanceResolver = (NewInstanceResolver) newInstanceResolver;
         } else if (newInstanceResolver instanceof Closure) {
-            final ObjectGraphBuilder self = this;
+            final MotherOfAllObjectsGraphBuilder self = this;
             this.newInstanceResolver = new NewInstanceResolver() {
                 public Object newInstance(Class klass, Map attributes)
                         throws InstantiationException, IllegalAccessException {
@@ -293,7 +293,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
                 }
             };
         } else if (referenceResolver instanceof Closure) {
-            final ObjectGraphBuilder self = this;
+            final MotherOfAllObjectsGraphBuilder self = this;
             this.referenceResolver = new ReferenceResolver() {
                 public String getReferenceFor(String nodeName) {
                     Closure cls = (Closure) referenceResolver;
@@ -621,18 +621,18 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
     private static class ObjectFactory extends AbstractFactory {
         public Object newInstance(FactoryBuilderSupport builder, Object name, Object value,
                                   Map properties) throws InstantiationException, IllegalAccessException {
-            ObjectGraphBuilder ogbuilder = (ObjectGraphBuilder) builder;
+            MotherOfAllObjectsGraphBuilder ogbuilder = (MotherOfAllObjectsGraphBuilder) builder;
             String classname = ogbuilder.classNameResolver.resolveClassname((String) name);
             Class klass = resolveClass(builder, classname, name, value, properties);
             Map context = builder.getContext();
-            context.put(ObjectGraphBuilder.NODE_NAME, name);
-            context.put(ObjectGraphBuilder.NODE_CLASS, klass);
+            context.put(MotherOfAllObjectsGraphBuilder.NODE_NAME, name);
+            context.put(MotherOfAllObjectsGraphBuilder.NODE_CLASS, klass);
             return resolveInstance(builder, name, value, klass, properties);
         }
 
         protected Class resolveClass(FactoryBuilderSupport builder, String classname, Object name, Object value,
                                   Map properties) throws InstantiationException, IllegalAccessException {
-            ObjectGraphBuilder ogbuilder = (ObjectGraphBuilder) builder;
+            MotherOfAllObjectsGraphBuilder ogbuilder = (MotherOfAllObjectsGraphBuilder) builder;
             Class klass = ogbuilder.resolvedClasses.get(classname);
             if (klass == null) {
                 klass = loadClass(ogbuilder.classLoader, classname);
@@ -660,7 +660,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
 
         protected Object resolveInstance(FactoryBuilderSupport builder, Object name, Object value, Class klass,
                                   Map properties) throws InstantiationException, IllegalAccessException {
-            ObjectGraphBuilder ogbuilder = (ObjectGraphBuilder) builder;
+            MotherOfAllObjectsGraphBuilder ogbuilder = (MotherOfAllObjectsGraphBuilder) builder;
             if (value != null && klass.isAssignableFrom(value.getClass())) {
                 return value;
             }
@@ -671,7 +671,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
         public void setChild(FactoryBuilderSupport builder, Object parent, Object child) {
             if (child == null) return;
 
-            ObjectGraphBuilder ogbuilder = (ObjectGraphBuilder) builder;
+            MotherOfAllObjectsGraphBuilder ogbuilder = (MotherOfAllObjectsGraphBuilder) builder;
             if (parent != null) {
                 Map context = ogbuilder.getContext();
                 Map parentContext = ogbuilder.getParentContext();
@@ -695,7 +695,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
         public void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
             if (child == null) return;
 
-            ObjectGraphBuilder ogbuilder = (ObjectGraphBuilder) builder;
+            MotherOfAllObjectsGraphBuilder ogbuilder = (MotherOfAllObjectsGraphBuilder) builder;
             if (parent != null) {
                 Map context = ogbuilder.getContext();
                 Map parentContext = ogbuilder.getParentContext();
@@ -738,7 +738,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
                 klass = resolveClass(builder, classname, name, value, properties);
                 bean = resolveInstance(builder, name, value, klass, properties);
                 */
-                throw new IllegalArgumentException("ObjectGraphBuilder."+((ObjectGraphBuilder)builder).getBeanFactoryName()+"() does not accept String nor GString as value.");
+                throw new IllegalArgumentException("ObjectGraphBuilder."+((MotherOfAllObjectsGraphBuilder)builder).getBeanFactoryName()+"() does not accept String nor GString as value.");
             } else if(value instanceof Class) {
                 klass = (Class) value;
                 bean = resolveInstance(builder, name, value, klass, properties);
@@ -753,8 +753,8 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
             } else {
                 nodename = nodename.toLowerCase();
             }
-            context.put(ObjectGraphBuilder.NODE_NAME, nodename);
-            context.put(ObjectGraphBuilder.NODE_CLASS, klass);
+            context.put(MotherOfAllObjectsGraphBuilder.NODE_NAME, nodename);
+            context.put(MotherOfAllObjectsGraphBuilder.NODE_CLASS, klass);
             return bean;
         }
     }
@@ -766,7 +766,7 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
 
         public Object newInstance(FactoryBuilderSupport builder, Object name, Object value,
                                   Map properties) throws InstantiationException, IllegalAccessException {
-            ObjectGraphBuilder ogbuilder = (ObjectGraphBuilder) builder;
+            MotherOfAllObjectsGraphBuilder ogbuilder = (MotherOfAllObjectsGraphBuilder) builder;
             String refProperty = ogbuilder.referenceResolver.getReferenceFor((String) name);
             Object refId = properties.remove(refProperty);
 
@@ -798,8 +798,8 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
             }
 
             Map context = ogbuilder.getContext();
-            context.put(ObjectGraphBuilder.NODE_NAME, name);
-            context.put(ObjectGraphBuilder.LAZY_REF, lazy);
+            context.put(MotherOfAllObjectsGraphBuilder.NODE_NAME, name);
+            context.put(MotherOfAllObjectsGraphBuilder.LAZY_REF, lazy);
 
             if (lazy.booleanValue()) {
                 Map parentContext = ogbuilder.getParentContext();
@@ -816,19 +816,19 @@ public class ObjectGraphBuilder extends FactoryBuilderSupport {
                         childName,
                         (String) refId));
             } else {
-                context.put(ObjectGraphBuilder.NODE_CLASS, object.getClass());
+                context.put(MotherOfAllObjectsGraphBuilder.NODE_CLASS, object.getClass());
             }
 
             return object;
         }
 
         public void setChild(FactoryBuilderSupport builder, Object parent, Object child) {
-            Boolean lazy = (Boolean) builder.getContext().get(ObjectGraphBuilder.LAZY_REF);
+            Boolean lazy = (Boolean) builder.getContext().get(MotherOfAllObjectsGraphBuilder.LAZY_REF);
             if (!lazy.booleanValue()) super.setChild(builder, parent, child);
         }
 
         public void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
-            Boolean lazy = (Boolean) builder.getContext().get(ObjectGraphBuilder.LAZY_REF);
+            Boolean lazy = (Boolean) builder.getContext().get(MotherOfAllObjectsGraphBuilder.LAZY_REF);
             if (!lazy.booleanValue()) super.setParent(builder, parent, child);
         }
     }

@@ -17,14 +17,14 @@
 package groovy.xml.streamingmarkupsupport;
 
 import groovy.lang.Closure;
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public abstract class Builder extends GroovyObjectSupport {
+public abstract class Builder extends GroovyMotherOfAllObjectsSupport {
     protected final Map namespaceMethodMap = new HashMap();
     
     public Builder(final Map namespaceMethodMap) {
@@ -58,7 +58,7 @@ public abstract class Builder extends GroovyObjectSupport {
     
     public abstract Object bind(Closure root);
     
-    protected abstract static class Built extends GroovyObjectSupport {
+    protected abstract static class Built extends GroovyMotherOfAllObjectsSupport {
     protected final Closure root;
     protected final Map namespaceSpecificTags = new HashMap();
         

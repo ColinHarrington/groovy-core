@@ -15,7 +15,7 @@
  */
 package org.codehaus.groovy.transform;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import org.codehaus.groovy.GroovyBugError;
 import org.codehaus.groovy.ast.*;
 import org.codehaus.groovy.ast.expr.*;
@@ -46,7 +46,7 @@ import java.util.Set;
 @GroovyASTTransformation(phase = CompilePhase.CANONICALIZATION)
 public class DelegateASTTransformation implements ASTTransformation, Opcodes {
     private static final ClassNode DEPRECATED_TYPE = ClassHelper.make(Deprecated.class);
-    private static final ClassNode GROOVYOBJECT_TYPE = ClassHelper.make(GroovyObject.class);
+    private static final ClassNode GROOVYOBJECT_TYPE = ClassHelper.make(GroovyMotherOfAllObjects.class);
 
     public void visit(ASTNode[] nodes, SourceUnit source) {
         if (nodes.length != 2 || !(nodes[0] instanceof AnnotationNode) || !(nodes[1] instanceof AnnotatedNode)) {

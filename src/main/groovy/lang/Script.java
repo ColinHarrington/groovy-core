@@ -30,7 +30,7 @@ import java.io.IOException;
  * @author Guillaume Laforge
  * @version $Revision$
  */
-public abstract class Script extends GroovyObjectSupport {
+public abstract class Script extends GroovyMotherOfAllObjectsSupport {
     private Binding binding;
 
     protected Script() {

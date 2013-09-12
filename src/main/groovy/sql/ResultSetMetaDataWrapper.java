@@ -18,7 +18,7 @@ package groovy.sql;
 
 import java.sql.ResultSetMetaData;
 
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 import groovy.lang.MissingPropertyException;
 import groovy.lang.ReadOnlyPropertyException;
 import org.codehaus.groovy.runtime.InvokerHelper;
@@ -39,7 +39,7 @@ import org.codehaus.groovy.runtime.InvokerHelper;
  * @author John Hurst
  * @see org.codehaus.groovy.runtime.SqlGroovyMethods
  */
-public class ResultSetMetaDataWrapper extends GroovyObjectSupport {
+public class ResultSetMetaDataWrapper extends GroovyMotherOfAllObjectsSupport {
 
     private ResultSetMetaData target;
     private int index;

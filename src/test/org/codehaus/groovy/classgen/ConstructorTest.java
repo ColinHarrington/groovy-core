@@ -15,7 +15,7 @@
  */
 package org.codehaus.groovy.classgen;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 
 /**
  * @author <a href="mailto:james@coredevelopers.net">James Strachan</a>
@@ -24,7 +24,7 @@ import groovy.lang.GroovyObject;
 public class ConstructorTest extends TestSupport {
 
     public void testConstructor() throws Exception {
-        GroovyObject object = compile("src/test/groovy/NewExpressionTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/NewExpressionTest.groovy");
         object.invokeMethod("testNewInstance", null);
     }
 }

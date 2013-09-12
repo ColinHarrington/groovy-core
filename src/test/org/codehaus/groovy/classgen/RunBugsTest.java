@@ -15,7 +15,7 @@
  */
 package org.codehaus.groovy.classgen;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 
 /**
  * A helper class for testing bugs in code generation errors. By turning on the
@@ -28,97 +28,97 @@ import groovy.lang.GroovyObject;
 public class RunBugsTest extends TestSupport {
 
     public void testStaticMethodCall() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/StaticMethodCallBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/StaticMethodCallBug.groovy");
         object.invokeMethod("testBug", null);
     }
 
     public void testTryCatchBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/TryCatchBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/TryCatchBug.groovy");
         object.invokeMethod("testBug", null);
     }
 
     public void testRodsBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/RodsBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/RodsBug.groovy");
         object.invokeMethod("testBug", null);
     }
 
     public void testCastBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/ClosureMethodCallTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/ClosureMethodCallTest.groovy");
         object.invokeMethod("testCallingClosureWithMultipleArguments", null);
     }
 
     public void testGuillaumesMapBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/GuillaumesMapBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/GuillaumesMapBug.groovy");
         object.invokeMethod("testBug", null);
     }
 
     public void testUseClosureInScript() throws Exception {
-        GroovyObject object = compile("src/test/groovy/script/UseClosureInScript.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/script/UseClosureInScript.groovy");
         object.invokeMethod("run", null);
     }
 
     public void testUseStaticInClosure() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/UseStaticInClosureBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/UseStaticInClosureBug.groovy");
         object.invokeMethod("testBug2", null);
     }
 
     public void testPrimitiveTypeFieldTest() throws Exception {
-        GroovyObject object = compile("src/test/groovy/PrimitiveTypeFieldTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/PrimitiveTypeFieldTest.groovy");
         object.invokeMethod("testPrimitiveField", null);
     }
     
     public void testMethodDispatchBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/MethodDispatchBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/MethodDispatchBug.groovy");
         object.invokeMethod("testBug", null);
     }
     public void testClosureInClosureTest() throws Exception {
-        GroovyObject object = compile("src/test/groovy/ClosureInClosureTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/ClosureInClosureTest.groovy");
         object.invokeMethod("testInvisibleVariable", null);
     }
     public void testStaticMarkupBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/StaticMarkupBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/StaticMarkupBug.groovy");
         object.invokeMethod("testBug", null);
     }
     public void testOverloadInvokeMethodBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/OverloadInvokeMethodBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/OverloadInvokeMethodBug.groovy");
         object.invokeMethod("testBug", null);
     }
     public void testClosureVariableBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/ClosureVariableBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/ClosureVariableBug.groovy");
         object.invokeMethod("testBug", null);
     }
     
     public void testMarkupAndMethodBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/MarkupAndMethodBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/MarkupAndMethodBug.groovy");
         object.invokeMethod("testBug", null);
     }
     public void testClosureParameterPassingBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/ClosureParameterPassingBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/ClosureParameterPassingBug.groovy");
         object.invokeMethod("testBug", null);
     }
     public void testNestedClosureBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/NestedClosure2Bug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/NestedClosure2Bug.groovy");
         object.invokeMethod("testFieldBug", null);
     }
     public void testSuperMethod2Bug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/SuperMethod2Bug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/SuperMethod2Bug.groovy");
         object.invokeMethod("testBug", null);
     }
     public void testToStringBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/ToStringBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/ToStringBug.groovy");
         object.invokeMethod("testBug", null);
     }
     public void testByteIndexBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/ByteIndexBug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/ByteIndexBug.groovy");
         object.invokeMethod("testBug", null);
     }
     public void testGroovy252_Bug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/Groovy252_Bug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/Groovy252_Bug.groovy");
         object.invokeMethod("testBug", null);
     }
 
     public void testGroovy303_Bug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/bugs/Groovy303_Bug.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/bugs/Groovy303_Bug.groovy");
         object.invokeMethod("testBug", null);
     }
 

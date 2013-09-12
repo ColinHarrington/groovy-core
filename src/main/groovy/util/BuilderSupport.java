@@ -16,7 +16,7 @@
 package groovy.util;
 
 import groovy.lang.Closure;
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 import groovy.lang.MissingMethodException;
 import org.codehaus.groovy.runtime.InvokerHelper;
 
@@ -30,7 +30,7 @@ import java.util.Map;
  * @author <a href="mailto:james@coredevelopers.net">James Strachan</a>
  * @version $Revision$
  */
-public abstract class BuilderSupport extends GroovyObjectSupport {
+public abstract class BuilderSupport extends GroovyMotherOfAllObjectsSupport {
 
     private Object current;
     private Closure nameMappingClosure;

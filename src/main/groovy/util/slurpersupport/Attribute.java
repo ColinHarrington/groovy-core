@@ -16,7 +16,7 @@
 package groovy.util.slurpersupport;
 
 import groovy.lang.Closure;
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.GroovyRuntimeException;
 
 import java.io.IOException;
@@ -111,7 +111,7 @@ public class Attribute extends GPathResult {
         return out;
     }
 
-    public void build(final GroovyObject builder) {
+    public void build(final GroovyMotherOfAllObjects builder) {
         builder.getProperty("mkp");
         builder.invokeMethod("yield", new Object[]{this.value});
     }

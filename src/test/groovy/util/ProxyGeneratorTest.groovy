@@ -44,7 +44,7 @@ class ProxyGeneratorTest extends GroovyTestCase {
         Map map = [myMethodC: {"the injected C"}]
         def testClass = generator.instantiateAggregateFromInterface(map, TestInterface)
         assert testClass instanceof TestInterface
-        assert testClass instanceof GroovyObject
+        assert testClass instanceof GroovyMotherOfAllObjects
         assert testClass.myMethodC() == "the injected C"
     }
 

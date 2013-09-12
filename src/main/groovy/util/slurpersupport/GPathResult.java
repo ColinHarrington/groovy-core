@@ -20,8 +20,8 @@ import groovy.lang.Buildable;
 import groovy.lang.Closure;
 import groovy.lang.DelegatingMetaClass;
 import groovy.lang.GString;
-import groovy.lang.GroovyObject;
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjects;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 import groovy.lang.IntRange;
 import groovy.lang.MetaClass;
 import groovy.lang.Writable;
@@ -47,7 +47,7 @@ import org.codehaus.groovy.runtime.DefaultGroovyMethods;
  *
  * @author John Wilson
  */
-public abstract class GPathResult extends GroovyObjectSupport implements Writable, Buildable {
+public abstract class GPathResult extends GroovyMotherOfAllObjectsSupport implements Writable, Buildable {
     protected final GPathResult parent;
     protected final String name;
     protected final String namespacePrefix;
@@ -153,7 +153,7 @@ public abstract class GPathResult extends GroovyObjectSupport implements Writabl
     public Object plus(final Object newValue) {
         this.replaceNode(new Closure(this) {
             public void doCall(Object[] args) {
-            final GroovyObject delegate = (GroovyObject)getDelegate();
+            final GroovyMotherOfAllObjects delegate = (GroovyMotherOfAllObjects)getDelegate();
              
                 delegate.getProperty("mkp");
                 delegate.invokeMethod("yield", args);
@@ -398,7 +398,7 @@ public abstract class GPathResult extends GroovyObjectSupport implements Writabl
     public Closure getBody() {
         return new Closure(this.parent(),this) {
             public void doCall(Object[] args) {
-                final GroovyObject delegate = (GroovyObject)getDelegate();
+                final GroovyMotherOfAllObjects delegate = (GroovyMotherOfAllObjects)getDelegate();
                 final GPathResult thisObject = (GPathResult)getThisObject();
 
                 Node node = (Node)thisObject.getAt(0);

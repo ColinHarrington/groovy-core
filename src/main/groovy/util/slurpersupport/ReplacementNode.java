@@ -16,7 +16,7 @@
 package groovy.util.slurpersupport;
 
 import groovy.lang.Buildable;
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.Writable;
 
 import java.io.IOException;
@@ -29,9 +29,9 @@ import java.util.Map;
  * @author John Wilson
  */
 public abstract class ReplacementNode implements Buildable, Writable {
-    public abstract void build(GroovyObject builder, Map namespaceMap, Map<String, String> namespaceTagHints);
+    public abstract void build(GroovyMotherOfAllObjects builder, Map namespaceMap, Map<String, String> namespaceTagHints);
     
-    public void build(final GroovyObject builder) {
+    public void build(final GroovyMotherOfAllObjects builder) {
         build(builder, null, null);
     }
     

@@ -21,7 +21,7 @@ import groovy.lang.MetaMethod;
 import org.codehaus.groovy.reflection.CachedMethod;
 import org.codehaus.groovy.runtime.GroovyCategorySupport;
 import org.codehaus.groovy.runtime.MetaClassHelper;
-import org.codehaus.groovy.runtime.NullObject;
+import org.codehaus.groovy.runtime.NullMotherOfAllObjects;
 import org.codehaus.groovy.runtime.ScriptBytecodeAdapter;
 
 import java.lang.reflect.InvocationTargetException;
@@ -68,7 +68,7 @@ public class PojoMetaMethodSite extends MetaMethodSite {
         }
         catch (NullPointerException e) {
             if (receiver == null)
-              return checkCall(NullObject.getNullObject(), args);
+              return checkCall(NullMotherOfAllObjects.getNullObject(), args);
 
             throw e;
         }
@@ -81,7 +81,7 @@ public class PojoMetaMethodSite extends MetaMethodSite {
                && MetaClassHelper.sameClasses(params);
         } catch (NullPointerException e) {
             if (receiver == null)
-              return checkCall(NullObject.getNullObject());
+              return checkCall(NullMotherOfAllObjects.getNullObject());
 
             throw e;
         }
@@ -94,7 +94,7 @@ public class PojoMetaMethodSite extends MetaMethodSite {
                && MetaClassHelper.sameClasses(params, arg1);
         } catch (NullPointerException e) {
             if (receiver == null)
-              return checkCall(NullObject.getNullObject(), arg1);
+              return checkCall(NullMotherOfAllObjects.getNullObject(), arg1);
 
             throw e;
         }
@@ -107,7 +107,7 @@ public class PojoMetaMethodSite extends MetaMethodSite {
                && MetaClassHelper.sameClasses(params, arg1, arg2);
         } catch (NullPointerException e) {
             if (receiver == null)
-              return checkCall(NullObject.getNullObject(), arg1, arg2);
+              return checkCall(NullMotherOfAllObjects.getNullObject(), arg1, arg2);
 
             throw e;
         }
@@ -120,7 +120,7 @@ public class PojoMetaMethodSite extends MetaMethodSite {
                && MetaClassHelper.sameClasses(params, arg1, arg2, arg3);
         } catch (NullPointerException e) {
             if (receiver == null)
-              return checkCall(NullObject.getNullObject(), arg1, arg2, arg3);
+              return checkCall(NullMotherOfAllObjects.getNullObject(), arg1, arg2, arg3);
 
             throw e;
         }
@@ -133,7 +133,7 @@ public class PojoMetaMethodSite extends MetaMethodSite {
                && MetaClassHelper.sameClasses(params, arg1, arg2, arg3, arg4);
         } catch (NullPointerException e) {
             if (receiver == null)
-              return checkCall(NullObject.getNullObject(), arg1, arg2, arg3, arg4);
+              return checkCall(NullMotherOfAllObjects.getNullObject(), arg1, arg2, arg3, arg4);
 
             throw e;
         }

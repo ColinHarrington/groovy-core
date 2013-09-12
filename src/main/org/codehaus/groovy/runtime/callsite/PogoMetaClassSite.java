@@ -15,7 +15,7 @@
  */
 package org.codehaus.groovy.runtime.callsite;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.GroovyRuntimeException;
 import groovy.lang.MetaClass;
 import groovy.lang.MissingMethodException;
@@ -42,7 +42,7 @@ public class PogoMetaClassSite extends MetaClassSite {
                         throw (MissingMethodException)e.getCause();
                     } else if (receiver.getClass() == e.getType() && e.getMethod().equals(name)) {
                         // in case there's nothing else, invoke the object's own invokeMethod()
-                        return ((GroovyObject)receiver).invokeMethod(name, args);
+                        return ((GroovyMotherOfAllObjects)receiver).invokeMethod(name, args);
                     } else {
                         throw e;
                     }
@@ -56,10 +56,10 @@ public class PogoMetaClassSite extends MetaClassSite {
     }
 
     protected final boolean checkCall(Object receiver) {
-        return receiver instanceof GroovyObject && ((GroovyObject)receiver).getMetaClass() == metaClass;
+        return receiver instanceof GroovyMotherOfAllObjects && ((GroovyMotherOfAllObjects)receiver).getMetaClass() == metaClass;
     }
 
-    public final Object callCurrent(GroovyObject receiver, Object[] args) throws Throwable {
+    public final Object callCurrent(GroovyMotherOfAllObjects receiver, Object[] args) throws Throwable {
         if (checkCall(receiver)) {
             try {
                 try {
@@ -69,7 +69,7 @@ public class PogoMetaClassSite extends MetaClassSite {
                         throw (MissingMethodException)e.getCause();
                     } else if (receiver.getClass() == e.getType() && e.getMethod().equals(name)) {
                         // in case there's nothing else, invoke the object's own invokeMethod()
-                        return ((GroovyObject)receiver).invokeMethod(name, args);
+                        return ((GroovyMotherOfAllObjects)receiver).invokeMethod(name, args);
                     } else {
                         throw e;
                     }

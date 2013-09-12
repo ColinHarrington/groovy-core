@@ -17,7 +17,7 @@ package groovy.util;
 
 import java.util.Iterator;
 
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 import groovy.lang.MissingMethodException;
 import org.codehaus.groovy.runtime.InvokerHelper;
 
@@ -29,7 +29,7 @@ import org.codehaus.groovy.runtime.InvokerHelper;
  * @author Troy Heninger
  * @author Dierk Koenig
  */
-public class Proxy extends GroovyObjectSupport {
+public class Proxy extends GroovyMotherOfAllObjectsSupport {
 
     private Object adaptee = null;
 

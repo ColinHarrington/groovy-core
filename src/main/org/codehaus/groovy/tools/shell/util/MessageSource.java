@@ -20,7 +20,7 @@ import java.util.MissingResourceException;
 
 import java.text.MessageFormat;
 
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 
 /**
  * Message source backed up by one or more {@link java.util.ResourceBundle}
@@ -30,7 +30,7 @@ import groovy.lang.GroovyObjectSupport;
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
 public class MessageSource
-    extends GroovyObjectSupport
+    extends GroovyMotherOfAllObjectsSupport
 {
     private final String[] bundleNames;
     

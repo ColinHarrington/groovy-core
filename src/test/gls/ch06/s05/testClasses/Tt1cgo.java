@@ -19,13 +19,13 @@ package gls.ch06.s05.testClasses;
 
 
 import groovy.lang.Closure;
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 
 /**
  * @author John Wilson
  */
 
-public class Tt1cgo extends GroovyObjectSupport {
+public class Tt1cgo extends GroovyMotherOfAllObjectsSupport {
     public Closure x = new Closure(null) {
         public Object doCall(final Object params) {
             return "field";

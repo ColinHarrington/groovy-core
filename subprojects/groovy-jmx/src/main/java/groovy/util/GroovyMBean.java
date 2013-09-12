@@ -15,7 +15,7 @@
  */
 package groovy.util;
 
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 import groovy.lang.GroovyRuntimeException;
 
 import javax.management.*;
@@ -34,7 +34,7 @@ import java.util.*;
  * @author Paul King
  * @version $Revision$
  */
-public class GroovyMBean extends GroovyObjectSupport {
+public class GroovyMBean extends GroovyMotherOfAllObjectsSupport {
     private final MBeanServerConnection server;
     private final ObjectName name;
     private MBeanInfo beanInfo;

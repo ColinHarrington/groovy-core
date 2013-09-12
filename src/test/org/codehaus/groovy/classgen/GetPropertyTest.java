@@ -15,7 +15,7 @@
  */
 package org.codehaus.groovy.classgen;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 
 /**
  * Tests using the GroovyObject API from Java on a groovy object
@@ -26,7 +26,7 @@ import groovy.lang.GroovyObject;
 public class GetPropertyTest extends TestSupport {
 
     public void testProperty() throws Exception {
-        GroovyObject object = compile("src/test/org/codehaus/groovy/classgen/MyBean.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/org/codehaus/groovy/classgen/MyBean.groovy");
         System.out.println("Got object: " + object);
 
         Object value = object.getProperty("name");

@@ -16,7 +16,7 @@
 package org.codehaus.groovy.binding;
 
 import groovy.lang.Closure;
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 import groovy.lang.Reference;
 
 import java.lang.reflect.Constructor;
@@ -142,7 +142,7 @@ class DeadEndObject {
     }
 }
 
-class BindPathSnooper extends GroovyObjectSupport {
+class BindPathSnooper extends GroovyMotherOfAllObjectsSupport {
     static final DeadEndObject DEAD_END = new DeadEndObject();
 
     Map<String, BindPathSnooper> fields = new LinkedHashMap<String, BindPathSnooper>();

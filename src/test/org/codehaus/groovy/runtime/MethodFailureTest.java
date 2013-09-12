@@ -16,7 +16,7 @@
 package org.codehaus.groovy.runtime;
 
 import groovy.lang.Closure;
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.GroovyRuntimeException;
 import groovy.util.GroovyTestCase;
 
@@ -29,7 +29,7 @@ import groovy.util.GroovyTestCase;
 public class MethodFailureTest extends GroovyTestCase {
 
     public void testFailingMethod() {
-        MockGroovyObject object = new MockGroovyObject();
+        MockGroovyMotherOfAllObjects object = new MockGroovyMotherOfAllObjects();
         try {
             object.invokeMethod("nonExistentMethod", "hello");
 
@@ -41,7 +41,7 @@ public class MethodFailureTest extends GroovyTestCase {
     }
 
     public void testMethodWhichCallsTheFailingMethod() {
-        MockGroovyObject object = new MockGroovyObject();
+        MockGroovyMotherOfAllObjects object = new MockGroovyMotherOfAllObjects();
         try {
             object.invokeMethod("methodThatFails", null);
 
@@ -54,10 +54,10 @@ public class MethodFailureTest extends GroovyTestCase {
     }
 
     public void testMethodWhichCallsTheFailingMethodInsideAClosure() {
-        MockGroovyObject object = new MockGroovyObject();
+        MockGroovyMotherOfAllObjects object = new MockGroovyMotherOfAllObjects();
         try {
             object.invokeMethod("callClosure", new Closure(this) {
-                protected Object doCall(GroovyObject object) {
+                protected Object doCall(GroovyMotherOfAllObjects object) {
                     return object.invokeMethod("nonExistentMethod", "hello");
                 }
             });

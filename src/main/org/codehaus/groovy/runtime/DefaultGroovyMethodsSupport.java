@@ -235,7 +235,7 @@ public class DefaultGroovyMethodsSupport {
         if (first instanceof Number) {
             baseClass = Number.class;
         } else if (first == null) {
-            baseClass = NullObject.class;
+            baseClass = NullMotherOfAllObjects.class;
         } else {
             baseClass = first.getClass();
         }

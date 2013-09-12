@@ -161,7 +161,7 @@ public class MockProxyMetaClass extends ProxyMetaClass {
             throw new RuntimeException("cannot invoke constructor without interceptor");
 
         if (interceptConstruction) {
-            GroovyObject newInstance = (GroovyObject) interceptor.beforeInvoke(null, getTheClass().getSimpleName(), arguments);
+            GroovyMotherOfAllObjects newInstance = (GroovyMotherOfAllObjects) interceptor.beforeInvoke(null, getTheClass().getSimpleName(), arguments);
             newInstance.setMetaClass(this);
             return newInstance;
         }

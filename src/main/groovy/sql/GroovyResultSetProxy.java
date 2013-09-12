@@ -15,7 +15,7 @@
  */
 package groovy.sql;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.GroovySystem;
 import groovy.lang.MetaClass;
 
@@ -79,7 +79,7 @@ public final class GroovyResultSetProxy implements InvocationHandler {
      */
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         String name = method.getName();
-        if (method.getDeclaringClass() == GroovyObject.class) {
+        if (method.getDeclaringClass() == GroovyMotherOfAllObjects.class) {
             if (name.equals("getMetaClass")) {
                 return getMetaClass();
             } else if (name.equals("setMetaClass")) {

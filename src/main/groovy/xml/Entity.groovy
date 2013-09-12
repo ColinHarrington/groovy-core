@@ -179,7 +179,7 @@ class Entity implements Buildable {
         this.entity = "&#$name;"
     }
     
-    void build(GroovyObject builder) {
+    void build(GroovyMotherOfAllObjects builder) {
         builder.unescaped << entity
     }
 }

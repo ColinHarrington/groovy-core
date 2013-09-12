@@ -118,7 +118,7 @@ class MockFor {
      * </pre>
      */
     MockFor(Class clazz, boolean interceptConstruction = false) {
-        if (interceptConstruction && !GroovyObject.isAssignableFrom(clazz)) {
+        if (interceptConstruction && !GroovyMotherOfAllObjects.isAssignableFrom(clazz)) {
             throw new IllegalArgumentException("MockFor with constructor interception enabled is only allowed for Groovy objects but found: " + clazz.name)
         }
         this.clazz = clazz
@@ -138,7 +138,7 @@ class MockFor {
         expect.verify()
     }
 
-    void use(GroovyObject obj, Closure closure) {
+    void use(GroovyMotherOfAllObjects obj, Closure closure) {
         proxy.use obj, closure
         expect.verify()
     }
@@ -146,7 +146,7 @@ class MockFor {
     /**
      * If manual verification is required
      */
-    void verify(GroovyObject obj) {
+    void verify(GroovyMotherOfAllObjects obj) {
         instanceExpectations[obj].verify()
     }
 
@@ -238,7 +238,7 @@ class MockFor {
      * Normally for mocks, <code>verify()</code> is call automatically at the end of the "use" Closure,
      * but with this style, no "use" Closure is present, so <code>verify()</code> must be called manually.
      */
-    GroovyObject proxyInstance(args=null) {
+    GroovyMotherOfAllObjects proxyInstance(args=null) {
         makeProxyInstance(args, false)
     }
 
@@ -252,11 +252,11 @@ class MockFor {
      * will be instantiated for the class of the instance (i.e. may be on the
      * generated class not the original class).
      */
-    GroovyObject proxyDelegateInstance(args=null) {
+    GroovyMotherOfAllObjects proxyDelegateInstance(args=null) {
         makeProxyInstance(args, true)
     }
 
-    GroovyObject makeProxyInstance(args, boolean isDelegate) {
+    GroovyMotherOfAllObjects makeProxyInstance(args, boolean isDelegate) {
         def instance = getInstance(clazz, args)
         def thisproxy = MockProxyMetaClass.make(isDelegate ? instance.getClass() : clazz)
         def thisdemand = new Demand(recorded: new ArrayList(demand.recorded), ignore: new HashMap(demand.ignore))
@@ -271,20 +271,20 @@ class MockFor {
         return wrapped
     }
 
-    static GroovyObject getInstance(Class clazz, args) {
-        GroovyObject instance = null
+    static GroovyMotherOfAllObjects getInstance(Class clazz, args) {
+        GroovyMotherOfAllObjects instance = null
         if (clazz.isInterface()) {
             instance = ProxyGenerator.INSTANCE.instantiateAggregateFromInterface(clazz)
         } else if (Modifier.isAbstract(clazz.modifiers)) {
             instance = ProxyGenerator.INSTANCE.instantiateAggregateFromBaseClass(clazz, args)
         } else if (args != null) {
-            if (GroovyObject.isAssignableFrom(clazz)) {
+            if (GroovyMotherOfAllObjects.isAssignableFrom(clazz)) {
                 instance = clazz.newInstance(args)
             } else {
                 instance = ProxyGenerator.INSTANCE.instantiateDelegate(clazz.newInstance(args))
             }
         } else {
-            if (GroovyObject.isAssignableFrom(clazz)) {
+            if (GroovyMotherOfAllObjects.isAssignableFrom(clazz)) {
                 instance = clazz.newInstance()
             } else {
                 instance = ProxyGenerator.INSTANCE.instantiateDelegate(clazz.newInstance())

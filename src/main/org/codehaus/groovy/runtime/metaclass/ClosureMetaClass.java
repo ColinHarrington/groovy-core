@@ -289,14 +289,14 @@ public final class ClosureMetaClass extends MetaClassImpl {
                     method = getDelegateMethod(closure, delegate, methodName, argClasses);
                     callObject = delegate;
                     if (method == null) {
-                        invokeOnDelegate = delegate != closure && (delegate instanceof GroovyObject);
+                        invokeOnDelegate = delegate != closure && (delegate instanceof GroovyMotherOfAllObjects);
                     }
                     break;
                 case Closure.OWNER_ONLY:
                     method = getDelegateMethod(closure, owner, methodName, argClasses);
                     callObject = owner;
                     if (method == null) {
-                        invokeOnOwner = owner != closure && (owner instanceof GroovyObject);
+                        invokeOnOwner = owner != closure && (owner instanceof GroovyMotherOfAllObjects);
                     }
 
                     break;
@@ -308,8 +308,8 @@ public final class ClosureMetaClass extends MetaClassImpl {
                         callObject = owner;
                     }
                     if (method == null) {
-                        invokeOnDelegate = delegate != closure && (delegate instanceof GroovyObject);
-                        invokeOnOwner = owner != closure && (owner instanceof GroovyObject);
+                        invokeOnDelegate = delegate != closure && (delegate instanceof GroovyMotherOfAllObjects);
+                        invokeOnOwner = owner != closure && (owner instanceof GroovyMotherOfAllObjects);
                         ownerFirst = false;
                     }
                     break;
@@ -336,8 +336,8 @@ public final class ClosureMetaClass extends MetaClassImpl {
                         }
                     }
                     if (method == null) {
-                        invokeOnDelegate = delegate != closure && (delegate instanceof GroovyObject);
-                        invokeOnOwner = owner != closure && (owner instanceof GroovyObject);
+                        invokeOnDelegate = delegate != closure && (delegate instanceof GroovyMotherOfAllObjects);
+                        invokeOnOwner = owner != closure && (owner instanceof GroovyMotherOfAllObjects);
                     }
             }
             if (method == null && (invokeOnOwner || invokeOnDelegate)) {
@@ -402,7 +402,7 @@ public final class ClosureMetaClass extends MetaClassImpl {
             String methodName, Object[] args) {
         MissingMethodException first = null;
         if (invoke1) {
-            GroovyObject go = (GroovyObject) o1;
+            GroovyMotherOfAllObjects go = (GroovyMotherOfAllObjects) o1;
             try {
                 return go.invokeMethod(methodName, args);
             } catch (MissingMethodException mme) {
@@ -418,7 +418,7 @@ public final class ClosureMetaClass extends MetaClassImpl {
             }
         }
         if (invoke2 && (!invoke1 || o1 != o2)) {
-            GroovyObject go = (GroovyObject) o2;
+            GroovyMotherOfAllObjects go = (GroovyMotherOfAllObjects) o2;
             try {
                 return go.invokeMethod(methodName, args);
             } catch (MissingMethodException mme) {
@@ -552,8 +552,8 @@ public final class ClosureMetaClass extends MetaClassImpl {
     }
 
     private MetaClass lookupObjectMetaClass(Object object) {
-        if (object instanceof GroovyObject) {
-            GroovyObject go = (GroovyObject) object;
+        if (object instanceof GroovyMotherOfAllObjects) {
+            GroovyMotherOfAllObjects go = (GroovyMotherOfAllObjects) object;
             return go.getMetaClass();
         }
         Class ownerClass = object.getClass();

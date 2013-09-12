@@ -31,7 +31,6 @@ import org.codehaus.groovy.runtime.dgmimpl.NumberNumberMinus;
 import org.codehaus.groovy.runtime.dgmimpl.NumberNumberMultiply;
 import org.codehaus.groovy.runtime.dgmimpl.NumberNumberPlus;
 import org.codehaus.groovy.runtime.dgmimpl.arrays.*;
-import org.codehaus.groovy.runtime.metaclass.ClosureMetaClass;
 import org.codehaus.groovy.runtime.metaclass.MetaClassRegistryImpl;
 import org.codehaus.groovy.runtime.metaclass.MissingPropertyExceptionNoStack;
 import org.codehaus.groovy.runtime.typehandling.DefaultTypeTransformation;
@@ -241,7 +240,7 @@ public class DefaultGroovyMethods extends DefaultGroovyMethodsSupport {
         buffer.append(klass.getName());
         buffer.append("@");
         buffer.append(Integer.toHexString(self.hashCode()));
-        boolean groovyObject = self instanceof GroovyObject;
+        boolean groovyObject = self instanceof GroovyMotherOfAllObjects;
 
         /*jes this may be rewritten to use the new getProperties() stuff
          * but the original pulls out private variables, whereas getProperties()
@@ -17728,7 +17727,7 @@ public class DefaultGroovyMethods extends DefaultGroovyMethodsSupport {
      * @return The MetaClass
      * @since 1.6.0
      */
-    public static MetaClass getMetaClass(GroovyObject obj) {
+    public static MetaClass getMetaClass(GroovyMotherOfAllObjects obj) {
         // we need this method as trick to guarantee correct method selection
         return getMetaClass((Object)obj);
     }
@@ -17750,8 +17749,8 @@ public class DefaultGroovyMethods extends DefaultGroovyMethodsSupport {
           } else {
             metaClassRegistry.setMetaClass(self, metaClass);
           }
-          if (self==NullObject.class) {
-              NullObject.getNullObject().setMetaClass(metaClass);
+          if (self==NullMotherOfAllObjects.class) {
+              NullMotherOfAllObjects.getNullObject().setMetaClass(metaClass);
           }
         }
     }
@@ -17766,8 +17765,8 @@ public class DefaultGroovyMethods extends DefaultGroovyMethodsSupport {
         if (metaClass instanceof HandleMetaClass)
             metaClass = ((HandleMetaClass)metaClass).getAdaptee();
 
-        if (self instanceof GroovyObject) {
-            ((GroovyObject)self).setMetaClass(metaClass);
+        if (self instanceof GroovyMotherOfAllObjects) {
+            ((GroovyMotherOfAllObjects)self).setMetaClass(metaClass);
             disablePrimitiveOptimization(self);
         } else if (self instanceof Class) {
             ((MetaClassRegistryImpl)GroovySystem.getMetaClassRegistry()).setMetaClass((Class)self, metaClass);
@@ -17870,8 +17869,8 @@ public class DefaultGroovyMethods extends DefaultGroovyMethodsSupport {
     }
 
     private static MetaClass hasPerInstanceMetaClass(Object object) {
-        if (object instanceof GroovyObject) {
-            MetaClass mc = ((GroovyObject)object).getMetaClass();
+        if (object instanceof GroovyMotherOfAllObjects) {
+            MetaClass mc = ((GroovyMotherOfAllObjects)object).getMetaClass();
             if (mc == GroovySystem.getMetaClassRegistry().getMetaClass(object.getClass()) || mc.getClass() == MetaClassImpl.class)
               return null;
             else

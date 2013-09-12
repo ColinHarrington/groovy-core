@@ -15,7 +15,7 @@
  */
 package groovy.sql;
 
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 import org.codehaus.groovy.runtime.DefaultGroovyMethods;
 import org.codehaus.groovy.runtime.InvokerHelper;
 
@@ -30,7 +30,7 @@ import java.util.logging.Logger;
  * If the batch count reaches the predefined number, this Statement does an executeBatch()
  * automatically. If batchSize is zero, then no batching is performed.
  */
-public class BatchingStatementWrapper extends GroovyObjectSupport {
+public class BatchingStatementWrapper extends GroovyMotherOfAllObjectsSupport {
     private Statement delegate;
     protected int batchSize;
     protected int batchCount;

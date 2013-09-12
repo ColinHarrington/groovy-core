@@ -75,7 +75,7 @@ class StubFor {
     Class clazz
 
     StubFor(Class clazz, boolean interceptConstruction = false) {
-        if (interceptConstruction && !GroovyObject.isAssignableFrom(clazz)) {
+        if (interceptConstruction && !GroovyMotherOfAllObjects.isAssignableFrom(clazz)) {
             throw new IllegalArgumentException("StubFor with constructor interception enabled is only allowed for Groovy objects but found: " + clazz.name)
         }
         this.clazz = clazz
@@ -93,14 +93,14 @@ class StubFor {
         proxy.use closure
     }
 
-    void use(GroovyObject obj, Closure closure) {
+    void use(GroovyMotherOfAllObjects obj, Closure closure) {
         proxy.use obj, closure
     }
 
     /**
      * For manual verification
      */
-    void verify(GroovyObject obj) {
+    void verify(GroovyMotherOfAllObjects obj) {
         instanceExpectations[obj].verify()
     }
 
@@ -133,7 +133,7 @@ class StubFor {
      *
      * @See MockFor#proxyInstance(Object)
      */
-    GroovyObject proxyInstance(args=null) {
+    GroovyMotherOfAllObjects proxyInstance(args=null) {
         makeProxyInstance(args, false)
     }
 
@@ -143,11 +143,11 @@ class StubFor {
      *
      * @See MockFor#proxyDelegateInstance(Object)
      */
-    GroovyObject proxyDelegateInstance(args=null) {
+    GroovyMotherOfAllObjects proxyDelegateInstance(args=null) {
         makeProxyInstance(args, true)
     }
 
-    GroovyObject makeProxyInstance(args, boolean isDelegate) {
+    GroovyMotherOfAllObjects makeProxyInstance(args, boolean isDelegate) {
         def instance = MockFor.getInstance(clazz, args)
         def thisproxy = MockProxyMetaClass.make(isDelegate ? instance.getClass() : clazz)
         def thisdemand = new Demand(recorded: new ArrayList(demand.recorded), ignore: new HashMap(demand.ignore))

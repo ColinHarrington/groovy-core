@@ -15,7 +15,7 @@
  */
 package org.codehaus.groovy.binding;
 
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 import groovy.lang.ReadOnlyPropertyException;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ import java.util.Map;
  * @version $Revision$
  * @since Groovy 1.5
  */
-public class BindingProxy extends GroovyObjectSupport implements BindingUpdatable {
+public class BindingProxy extends GroovyMotherOfAllObjectsSupport implements BindingUpdatable {
 
     Object model;
     boolean bound;

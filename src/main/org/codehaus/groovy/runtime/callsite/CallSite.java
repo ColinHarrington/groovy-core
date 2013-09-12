@@ -15,7 +15,7 @@
  */
 package org.codehaus.groovy.runtime.callsite;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 
 
 public interface CallSite {
@@ -43,12 +43,12 @@ public interface CallSite {
     Object callSafe (Object receiver, Object arg1, Object arg2, Object arg3) throws Throwable;
     Object callSafe (Object receiver, Object arg1, Object arg2, Object arg3, Object arg4) throws Throwable;
 
-    Object callCurrent (GroovyObject receiver, Object [] args) throws Throwable;
-    Object callCurrent (GroovyObject receiver) throws Throwable;
-    Object callCurrent (GroovyObject receiver, Object arg1) throws Throwable;
-    Object callCurrent (GroovyObject receiver, Object arg1, Object arg2) throws Throwable;
-    Object callCurrent (GroovyObject receiver, Object arg1, Object arg2, Object arg3) throws Throwable;
-    Object callCurrent (GroovyObject receiver, Object arg1, Object arg2, Object arg3, Object arg4) throws Throwable;
+    Object callCurrent (GroovyMotherOfAllObjects receiver, Object [] args) throws Throwable;
+    Object callCurrent (GroovyMotherOfAllObjects receiver) throws Throwable;
+    Object callCurrent (GroovyMotherOfAllObjects receiver, Object arg1) throws Throwable;
+    Object callCurrent (GroovyMotherOfAllObjects receiver, Object arg1, Object arg2) throws Throwable;
+    Object callCurrent (GroovyMotherOfAllObjects receiver, Object arg1, Object arg2, Object arg3) throws Throwable;
+    Object callCurrent (GroovyMotherOfAllObjects receiver, Object arg1, Object arg2, Object arg3, Object arg4) throws Throwable;
 
     Object callStatic (Class receiver, Object [] args) throws Throwable;
     Object callStatic (Class receiver) throws Throwable;

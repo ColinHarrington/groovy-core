@@ -18,7 +18,7 @@ package org.codehaus.groovy.runtime.callsite;
 import groovy.lang.GroovyRuntimeException;
 
 import org.codehaus.groovy.runtime.InvokerHelper;
-import org.codehaus.groovy.runtime.NullObject;
+import org.codehaus.groovy.runtime.NullMotherOfAllObjects;
 import org.codehaus.groovy.runtime.ScriptBytecodeAdapter;
 
 public final class NullCallSite extends AbstractCallSite {
@@ -29,7 +29,7 @@ public final class NullCallSite extends AbstractCallSite {
     public Object call(Object receiver, Object[] args) throws Throwable {
         if (receiver == null) {
             try{
-                return CallSiteArray.defaultCall(this, NullObject.getNullObject(), args);
+                return CallSiteArray.defaultCall(this, NullMotherOfAllObjects.getNullObject(), args);
             } catch (GroovyRuntimeException gre) {
                 throw ScriptBytecodeAdapter.unwrap(gre);
             }
@@ -41,7 +41,7 @@ public final class NullCallSite extends AbstractCallSite {
     public Object getProperty(Object receiver) throws Throwable {
         if (receiver == null) {
             try{
-                return InvokerHelper.getProperty(NullObject.getNullObject(), name);
+                return InvokerHelper.getProperty(NullMotherOfAllObjects.getNullObject(), name);
             } catch (GroovyRuntimeException gre) {
                 throw ScriptBytecodeAdapter.unwrap(gre);
             }

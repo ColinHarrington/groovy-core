@@ -17,7 +17,7 @@ package groovy.util.slurpersupport;
 
 import groovy.lang.Buildable;
 import groovy.lang.Closure;
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.GroovyRuntimeException;
 
 import java.io.IOException;
@@ -202,7 +202,7 @@ class NodeChildren extends GPathResult {
         return new FilteredNodeChildren(this, closure, namespaceTagHints);
     }
 
-    public void build(final GroovyObject builder) {
+    public void build(final GroovyMotherOfAllObjects builder) {
         final Iterator iter = nodeIterator();
         while (iter.hasNext()) {
             final Object next = iter.next();

@@ -84,7 +84,7 @@ public class ProxyMetaClass extends MetaClassImpl implements AdaptingMetaClass {
      *
      * @param closure piece of code to be executed with ProxyMetaClass
      */
-    public Object use(GroovyObject object, Closure closure) {
+    public Object use(GroovyMotherOfAllObjects object, Closure closure) {
         // grab existing meta (usually adaptee but we may have nested use calls)
         MetaClass origMetaClass = object.getMetaClass();
         object.setMetaClass(this);

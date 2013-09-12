@@ -27,7 +27,7 @@ import java.util.Map;
  * @author <a href="mailto:james@coredevelopers.net">James Strachan</a>
  * @version $Revision$
  */
-public class Binding extends GroovyObjectSupport {
+public class Binding extends GroovyMotherOfAllObjectsSupport {
     private Map variables;
 
     public Binding() {

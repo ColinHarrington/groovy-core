@@ -52,14 +52,14 @@ class NullObjectTest extends GroovyTestCase {
     
     void testEMC() {
         def oldMC = null.getMetaClass()
-        NullObject.metaClass.hello = { -> "Greeting from null" }
+        NullMotherOfAllObjects.metaClass.hello = { -> "Greeting from null" }
         assert null.hello() == "Greeting from null"
         null.setMetaClass(oldMC)
     }
 }
 
 class MyCategory {
-    public static String toString(NullObject obj) {
+    public static String toString(NullMotherOfAllObjects obj) {
         return ""
     }
 }

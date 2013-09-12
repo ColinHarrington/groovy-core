@@ -18,7 +18,7 @@ package org.codehaus.groovy.runtime.callsite;
 import groovy.lang.MetaClass;
 import groovy.lang.MetaClassImpl;
 import groovy.lang.GroovyInterceptable;
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 
 import org.codehaus.groovy.runtime.GroovyCategorySupport;
 import org.codehaus.groovy.runtime.InvokerHelper;
@@ -42,7 +42,7 @@ public final class CallSiteArray {
         return createCallSite(callSite, receiver, args).call(receiver, args);
     }
 
-    public static Object defaultCallCurrent(CallSite callSite, GroovyObject receiver, Object[] args) throws Throwable {
+    public static Object defaultCallCurrent(CallSite callSite, GroovyMotherOfAllObjects receiver, Object[] args) throws Throwable {
         return createCallCurrentSite(callSite, receiver, args, callSite.getArray().owner).callCurrent(receiver, args);
     }
 
@@ -81,7 +81,7 @@ public final class CallSiteArray {
         return site;
     }
 
-    private static CallSite createCallCurrentSite(CallSite callSite, GroovyObject receiver, Object[] args, Class sender) {
+    private static CallSite createCallCurrentSite(CallSite callSite, GroovyMotherOfAllObjects receiver, Object[] args, Class sender) {
         CallSite site;
         if (receiver instanceof GroovyInterceptable)
           site = new PogoInterceptableSite(callSite);
@@ -128,7 +128,7 @@ public final class CallSiteArray {
         if (receiver instanceof GroovyInterceptable)
           return new PogoInterceptableSite(callSite);
 
-        MetaClass metaClass = ((GroovyObject)receiver).getMetaClass();
+        MetaClass metaClass = ((GroovyMotherOfAllObjects)receiver).getMetaClass();
 
         if (metaClass instanceof MetaClassImpl) {
             return ((MetaClassImpl)metaClass).createPogoCallSite(callSite, args);
@@ -144,7 +144,7 @@ public final class CallSiteArray {
 
         if (receiver instanceof Class)
           site = createCallStaticSite(callSite, (Class) receiver, args);
-        else if (receiver instanceof GroovyObject) {
+        else if (receiver instanceof GroovyMotherOfAllObjects) {
             site = createPogoSite(callSite, receiver, args);
         } else {
             site = createPojoSite(callSite, receiver, args);

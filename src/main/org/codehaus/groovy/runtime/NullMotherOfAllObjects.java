@@ -18,15 +18,15 @@ package org.codehaus.groovy.runtime;
 import java.util.Collections;
 import java.util.Iterator;
 
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 
-public class NullObject extends GroovyObjectSupport {
-    private static final NullObject INSTANCE = new NullObject();
+public class NullMotherOfAllObjects extends GroovyMotherOfAllObjectsSupport {
+    private static final NullMotherOfAllObjects INSTANCE = new NullMotherOfAllObjects();
 
     /**
      * private constructor
      */
-    private NullObject() {
+    private NullMotherOfAllObjects() {
     }
 
     /**
@@ -34,7 +34,7 @@ public class NullObject extends GroovyObjectSupport {
      *
      * @return the null object
      */
-    public static NullObject getNullObject() {
+    public static NullMotherOfAllObjects getNullObject() {
         return INSTANCE;
     }
 

@@ -16,13 +16,13 @@
 
 package org.codehaus.groovy.runtime.wrappers;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.MetaClass;
 
 /**
  * @author John Wilson
  */
-public abstract class Wrapper implements GroovyObject {
+public abstract class Wrapper implements GroovyMotherOfAllObjects {
     protected final Class constrainedType;
 
     public Wrapper(final Class constrainedType) {

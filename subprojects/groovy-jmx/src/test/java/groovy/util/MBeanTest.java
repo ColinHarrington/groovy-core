@@ -15,7 +15,7 @@
  */
 package groovy.util;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import org.codehaus.groovy.classgen.TestSupport;
 
 import javax.management.MBeanServer;
@@ -38,7 +38,7 @@ public class MBeanTest extends TestSupport {
 
         assertEquals("JMX value of Name", "James", mbeanServer.getAttribute(name, "Name"));
 
-        GroovyObject object = new GroovyMBean(mbeanServer, name);
+        GroovyMotherOfAllObjects object = new GroovyMBean(mbeanServer, name);
 
         Object value = object.getProperty("Name");
         assertEquals("Name property", "James", value);

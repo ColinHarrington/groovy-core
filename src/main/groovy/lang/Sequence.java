@@ -31,7 +31,7 @@ import org.codehaus.groovy.runtime.typehandling.DefaultTypeTransformation;
  * @author <a href="mailto:james@coredevelopers.net">James Strachan</a>
  * @version $Revision$
  */
-public class Sequence extends ArrayList implements GroovyObject {
+public class Sequence extends ArrayList implements GroovyMotherOfAllObjects {
 
     private MetaClass metaClass = InvokerHelper.getMetaClass(getClass());
     private Class type;

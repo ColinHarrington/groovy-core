@@ -22,7 +22,7 @@ class StubTest extends GroovyTestCase {
    }
 
    void testWIthOGBOutsideUse() {
-      def ogb = new ObjectGraphBuilder( classNameResolver: 'groovy.mock.interceptor' )
+      def ogb = new MotherOfAllObjectsGraphBuilder( classNameResolver: 'groovy.mock.interceptor' )
       def stub = new StubFor( Company )
       stub.demand.payroll(0..2) { 500 }
       def acme = ogb.company {
@@ -35,8 +35,8 @@ class StubTest extends GroovyTestCase {
    }
 
    void testWIthOGBInsideUse() {
-      def ogb = new ObjectGraphBuilder( classNameResolver: 'groovy.mock.interceptor' )
-      def stub = new StubFor( ObjectGraphBuilder )
+      def ogb = new MotherOfAllObjectsGraphBuilder( classNameResolver: 'groovy.mock.interceptor' )
+      def stub = new StubFor( MotherOfAllObjectsGraphBuilder )
       stub.use {
          def acme = ogb.company {
             // blows after the next line because property handling

@@ -19,7 +19,7 @@ import org.codehaus.groovy.runtime.ScriptBytecodeAdapter;
 
 import groovy.lang.GroovyRuntimeException;
 import groovy.lang.MetaClass;
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 
 public class PogoMetaClassGetPropertySite extends AbstractCallSite {
     private final MetaClass metaClass;
@@ -30,14 +30,14 @@ public class PogoMetaClassGetPropertySite extends AbstractCallSite {
     }
 
     public final CallSite acceptGetProperty(Object receiver) {
-        if (!(receiver instanceof GroovyObject) || ((GroovyObject)receiver).getMetaClass() != metaClass)
+        if (!(receiver instanceof GroovyMotherOfAllObjects) || ((GroovyMotherOfAllObjects)receiver).getMetaClass() != metaClass)
             return createGetPropertySite(receiver);
         else
           return this;
     }
 
     public final CallSite acceptGroovyObjectGetProperty(Object receiver) {
-        if (!(receiver instanceof GroovyObject) || ((GroovyObject)receiver).getMetaClass() != metaClass)
+        if (!(receiver instanceof GroovyMotherOfAllObjects) || ((GroovyMotherOfAllObjects)receiver).getMetaClass() != metaClass)
             return createGroovyObjectGetPropertySite(receiver);
         else
           return this;

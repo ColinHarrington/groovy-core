@@ -15,7 +15,7 @@
  */
 package org.codehaus.groovy.classgen;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.MetaClass;
 
 import java.io.File;
@@ -34,7 +34,7 @@ public class GroovyClassLoaderTest extends TestSupport {
 
         System.out.println("Invoking main...");
 
-        GroovyObject object = (GroovyObject) groovyClass.newInstance();
+        GroovyMotherOfAllObjects object = (GroovyMotherOfAllObjects) groovyClass.newInstance();
 
         assertTrue(object != null);
 

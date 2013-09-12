@@ -191,7 +191,7 @@ public class GStringTemplateEngine extends TemplateEngine {
             }
 
             try {
-                final GroovyObject object = (GroovyObject) groovyClass.newInstance();
+                final GroovyMotherOfAllObjects object = (GroovyMotherOfAllObjects) groovyClass.newInstance();
 
                 this.template = (Closure) object.invokeMethod("getTemplate", null);
             } catch (InstantiationException e) {

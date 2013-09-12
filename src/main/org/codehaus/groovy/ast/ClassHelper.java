@@ -49,7 +49,7 @@ public class ClassHelper {
         Character.class, Byte.class, Short.class, Integer.class, Long.class,
         Double.class, Float.class, BigDecimal.class, BigInteger.class, 
         Number.class, Void.class, Reference.class, Class.class, MetaClass.class, 
-        Iterator.class, GeneratedClosure.class, GroovyObjectSupport.class
+        Iterator.class, GeneratedClosure.class, GroovyMotherOfAllObjectsSupport.class
     };
 
     private static final String[] primitiveClassNames = new String[] {
@@ -83,8 +83,8 @@ public class ClassHelper {
         // uncached constants.
         CLASS_Type = makeWithoutCaching(Class.class), COMPARABLE_TYPE = makeWithoutCaching(Comparable.class),        
         GENERATED_CLOSURE_Type = makeWithoutCaching(GeneratedClosure.class),
-        GROOVY_OBJECT_SUPPORT_TYPE = makeWithoutCaching(GroovyObjectSupport.class),
-        GROOVY_OBJECT_TYPE = makeWithoutCaching(GroovyObject.class),
+        GROOVY_OBJECT_SUPPORT_TYPE = makeWithoutCaching(GroovyMotherOfAllObjectsSupport.class),
+        GROOVY_OBJECT_TYPE = makeWithoutCaching(GroovyMotherOfAllObjects.class),
         GROOVY_INTERCEPTABLE_TYPE = makeWithoutCaching(GroovyInterceptable.class),
         
         Enum_Type = new ClassNode("java.lang.Enum",0,OBJECT_TYPE),

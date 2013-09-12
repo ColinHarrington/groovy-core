@@ -17,7 +17,7 @@ package groovy.util.slurpersupport;
 
 import groovy.lang.Buildable;
 import groovy.lang.Closure;
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.Writable;
 
 import java.io.IOException;
@@ -78,7 +78,7 @@ public class Node implements Writable {
 
     public void replaceNode(final Closure replacementClosure, final GPathResult result) {
         this.replacementNodeStack.push(new ReplacementNode() {
-            public void build(final GroovyObject builder, final Map namespaceMap, final Map<String, String> namespaceTagHints) {
+            public void build(final GroovyMotherOfAllObjects builder, final Map namespaceMap, final Map<String, String> namespaceTagHints) {
                 final Closure c = (Closure) replacementClosure.clone();
                 Node.this.replacementNodeStack.pop(); // disable the replacement whilst the closure is being executed
                 c.setDelegate(builder);
@@ -97,7 +97,7 @@ public class Node implements Writable {
     protected void appendNode(final Object newValue, final GPathResult result) {
         if (newValue instanceof Closure) {
             this.children.add(new ReplacementNode() {
-                public void build(final GroovyObject builder, final Map namespaceMap, final Map<String, String> namespaceTagHints) {
+                public void build(final GroovyMotherOfAllObjects builder, final Map namespaceMap, final Map<String, String> namespaceTagHints) {
                     final Closure c = (Closure) ((Closure) newValue).clone();
                     c.setDelegate(builder);
                     c.call(new Object[]{result});
@@ -185,7 +185,7 @@ public class Node implements Writable {
         }
     }
 
-    public void build(final GroovyObject builder, final Map namespaceMap, final Map<String, String> namespaceTagHints) {
+    public void build(final GroovyMotherOfAllObjects builder, final Map namespaceMap, final Map<String, String> namespaceTagHints) {
         if (this.replacementNodeStack.empty()) {
             final Closure rest = new Closure(null) {
                 public Object doCall(final Object o) {
@@ -242,7 +242,7 @@ public class Node implements Writable {
 
     private static String getTagFor(final Object namespaceURI, final Map current,
                                     final Map pending, final Map local, final Map tagHints,
-                                    final List newTags, final GroovyObject builder) {
+                                    final List newTags, final GroovyMotherOfAllObjects builder) {
         String tag = findNamespaceTag(pending, namespaceURI); // look in the namespaces whose declaration has already been emitted
         if (tag == null) {
             tag = findNamespaceTag(current, namespaceURI);  // look in the namespaces who will be declared at the next element
@@ -290,7 +290,7 @@ public class Node implements Writable {
         return null;
     }
 
-    private void buildChildren(final GroovyObject builder, final Map namespaceMap, final Map<String, String> namespaceTagHints) {
+    private void buildChildren(final GroovyMotherOfAllObjects builder, final Map namespaceMap, final Map<String, String> namespaceTagHints) {
         final Iterator iter = this.children.iterator();
         while (iter.hasNext()) {
             final Object child = iter.next();

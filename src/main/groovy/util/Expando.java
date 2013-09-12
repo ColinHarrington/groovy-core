@@ -16,7 +16,7 @@
 package groovy.util;
 
 import groovy.lang.Closure;
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 import groovy.lang.GroovyRuntimeException;
 import groovy.lang.MetaExpandoProperty;
 import groovy.lang.MissingPropertyException;
@@ -36,7 +36,7 @@ import java.util.ArrayList;
  * @author Pilho Kim
  * @version $Revision$
  */
-public class Expando extends GroovyObjectSupport {
+public class Expando extends GroovyMotherOfAllObjectsSupport {
 
     private Map expandoProperties;
 

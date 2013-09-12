@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
  * @author <a href="mailto:james@coredevelopers.net">James Strachan</a>
  * @version $Revision$
  */
-public abstract class GString extends GroovyObjectSupport implements Comparable, CharSequence, Writable, Buildable, Serializable {
+public abstract class GString extends GroovyMotherOfAllObjectsSupport implements Comparable, CharSequence, Writable, Buildable, Serializable {
 
     static final long serialVersionUID = -2638020355892246323L;
 
@@ -197,7 +197,7 @@ public abstract class GString extends GroovyObjectSupport implements Comparable,
      * @see groovy.lang.Buildable#build(groovy.lang.GroovyObject)
      */
 
-    public void build(final GroovyObject builder) {
+    public void build(final GroovyMotherOfAllObjects builder) {
         final String[] s = getStrings();
         final int numberOfValues = values.length;
 

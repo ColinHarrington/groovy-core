@@ -1,8 +1,8 @@
 package groovy.util
 
 class ObjectGraphBuilderTest extends GroovyTestCase {
-   ObjectGraphBuilder builder
-   ObjectGraphBuilder reflectionBuilder
+   MotherOfAllObjectsGraphBuilder builder
+   MotherOfAllObjectsGraphBuilder reflectionBuilder
 
    void testCompany() {
       def expected = new Company( name: 'ACME', employees: [] )
@@ -312,9 +312,9 @@ class ObjectGraphBuilderTest extends GroovyTestCase {
    }
 
    void setUp() {
-      builder = new ObjectGraphBuilder()
+      builder = new MotherOfAllObjectsGraphBuilder()
       builder.classNameResolver = "groovy.util"
-      reflectionBuilder = new ObjectGraphBuilder()
+      reflectionBuilder = new MotherOfAllObjectsGraphBuilder()
       reflectionBuilder.classNameResolver = [ name: 'reflection', root: "groovy.util" ]
    }
 }

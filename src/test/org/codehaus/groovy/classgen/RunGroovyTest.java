@@ -15,7 +15,7 @@
  */
 package org.codehaus.groovy.classgen;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.MissingMethodException;
 
 import java.awt.HeadlessException;
@@ -29,40 +29,40 @@ import java.awt.HeadlessException;
 public class RunGroovyTest extends TestSupport {
 
     public void testArrayBug() throws Exception {
-        GroovyObject object = compile("src/test/groovy/ToArrayBugTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/ToArrayBugTest.groovy");
         object.invokeMethod("testToArrayBug", null);
     }
 
 
     public void testPostfix() throws Exception {
-        GroovyObject object = compile("src/test/groovy/PostfixTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/PostfixTest.groovy");
         object.invokeMethod("testIntegerPostfix", null);
     }
 
     public void testMap() throws Exception {
-        GroovyObject object = compile("src/test/groovy/MapTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/MapTest.groovy");
         object.invokeMethod("testMap", null);
     }
 
     public void testClosure() throws Exception {
-        GroovyObject object = compile("src/test/groovy/ClosureMethodTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/ClosureMethodTest.groovy");
         object.invokeMethod("testListCollect", null);
     }
 
     public void testClosureWithDefaultParam() throws Exception {
-        GroovyObject object = compile("src/test/groovy/ClosureWithDefaultParamTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/ClosureWithDefaultParamTest.groovy");
         object.invokeMethod("methodWithDefaultParam", null);
     }
 
     public void testOptionalReturn() throws Exception {
-        GroovyObject object = compile("src/test/groovy/OptionalReturnTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/OptionalReturnTest.groovy");
         object.invokeMethod("testSingleExpression", null);
         object.invokeMethod("testLastExpressionIsSimple", null);
     }
 
     public void testConsole() throws Exception {
         try {
-            GroovyObject object = compile("src/main/groovy/ui/Console.groovy");
+            GroovyMotherOfAllObjects object = compile("src/main/groovy/ui/Console.groovy");
         } catch (MissingMethodException mme) {
             // ignore due to missing ivy dependencies in class loader
         } catch (HeadlessException he) {

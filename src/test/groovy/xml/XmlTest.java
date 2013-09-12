@@ -15,7 +15,7 @@
  */
 package groovy.xml;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import org.codehaus.groovy.classgen.TestSupport;
 
 /**
@@ -25,7 +25,7 @@ import org.codehaus.groovy.classgen.TestSupport;
 public class XmlTest extends TestSupport {
 
     public void testTree() throws Exception {
-        GroovyObject object = compile("src/test/groovy/xml/dom/NamespaceDOMTest.groovy");
+        GroovyMotherOfAllObjects object = compile("src/test/groovy/xml/dom/NamespaceDOMTest.groovy");
         object.invokeMethod("testXsdSchemaWithBuilderHavingAutoPrefix", null);
     }
 

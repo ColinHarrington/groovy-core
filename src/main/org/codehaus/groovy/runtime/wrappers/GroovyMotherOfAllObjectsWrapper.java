@@ -16,16 +16,16 @@
 
 package org.codehaus.groovy.runtime.wrappers;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.MetaClass;
 
 /**
  * @author John Wilson
  */
-public class GroovyObjectWrapper extends Wrapper {
-    protected final GroovyObject wrapped;
+public class GroovyMotherOfAllObjectsWrapper extends Wrapper {
+    protected final GroovyMotherOfAllObjects wrapped;
 
-    public GroovyObjectWrapper(final GroovyObject wrapped, final Class constrainedType) {
+    public GroovyMotherOfAllObjectsWrapper(final GroovyMotherOfAllObjects wrapped, final Class constrainedType) {
         super(constrainedType);
         this.wrapped = wrapped;
     }

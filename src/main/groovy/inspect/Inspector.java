@@ -15,7 +15,7 @@
  */
 package groovy.inspect;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.MetaClass;
 import groovy.lang.MetaMethod;
 import groovy.lang.PropertyValue;
@@ -94,7 +94,7 @@ public class Inspector {
     }
 
     public boolean isGroovy() {
-        return GroovyObject.class.isAssignableFrom(getClassUnderInspection());
+        return GroovyMotherOfAllObjects.class.isAssignableFrom(getClassUnderInspection());
     }
 
     /**

@@ -15,7 +15,7 @@
  */
 package groovy.j2ee;
 
-import groovy.lang.GroovyObject;
+import groovy.lang.GroovyMotherOfAllObjects;
 import groovy.lang.GroovyShell;
 import org.codehaus.groovy.runtime.InvokerHelper;
 
@@ -63,7 +63,7 @@ public class J2eeConsole {
             //shell.evaluate("src/test/groovy/j2ee/CreateData.groovy");
 
             //shell.evaluate("src/main/groovy/ui/Console.groovy");
-            GroovyObject console = (GroovyObject) InvokerHelper.invokeConstructorOf("groovy.ui.Console", null);
+            GroovyMotherOfAllObjects console = (GroovyMotherOfAllObjects) InvokerHelper.invokeConstructorOf("groovy.ui.Console", null);
             console.setProperty("shell", shell);
             console.invokeMethod("run", null);
             /*

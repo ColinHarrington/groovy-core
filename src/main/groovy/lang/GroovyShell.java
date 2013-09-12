@@ -40,7 +40,7 @@ import java.util.List;
  * @author Paul King
  * @version $Revision$
  */
-public class GroovyShell extends GroovyObjectSupport {
+public class GroovyShell extends GroovyMotherOfAllObjectsSupport {
 
     public static final String DEFAULT_CODE_BASE = "/groovy/shell";
 

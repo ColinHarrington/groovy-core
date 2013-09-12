@@ -46,7 +46,7 @@ public class HandleMetaClass extends DelegatingMetaClass {
         delegate.initialize();
     }
 
-    public GroovyObject replaceDelegate() {
+    public GroovyMotherOfAllObjects replaceDelegate() {
         if (object == null) {
             if (!(delegate instanceof ExpandoMetaClass)) {
               delegate = new ExpandoMetaClass(delegate.getTheClass(), true, true);
@@ -68,7 +68,7 @@ public class HandleMetaClass extends DelegatingMetaClass {
               object = NONE;
           }
         }
-        return (GroovyObject)delegate;
+        return (GroovyMotherOfAllObjects)delegate;
     }
 
     public Object invokeMethod(String name, Object args) {

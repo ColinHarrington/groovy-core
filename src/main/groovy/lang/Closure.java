@@ -61,7 +61,7 @@ import java.io.Writer;
  *
  * @version $Revision$
  */
-public abstract class Closure<V> extends GroovyObjectSupport implements Cloneable, Runnable, GroovyCallable<V>, Serializable {
+public abstract class Closure<V> extends GroovyMotherOfAllObjectsSupport implements Cloneable, Runnable, GroovyCallable<V>, Serializable {
 
     /**
      * With this resolveStrategy set the closure will attempt to resolve property references to the

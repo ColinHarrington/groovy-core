@@ -26,7 +26,7 @@ import java.util.List;
  * @author John Wilson
  */
 
-public class DelegatingMetaClass implements MetaClass, MutableMetaClass, GroovyObject {
+public class DelegatingMetaClass implements MetaClass, MutableMetaClass, GroovyMotherOfAllObjects {
     protected MetaClass delegate;
 
     public DelegatingMetaClass(final MetaClass delegate) {
@@ -236,7 +236,7 @@ public class DelegatingMetaClass implements MetaClass, MutableMetaClass, GroovyO
     }
 
     public boolean isGroovyObject() {
-        return GroovyObject.class.isAssignableFrom(this.delegate.getTheClass());
+        return GroovyMotherOfAllObjects.class.isAssignableFrom(this.delegate.getTheClass());
     }
 
     public void setAttribute(Class sender, Object receiver, String messageName, Object messageValue, boolean useSuper, boolean fromInsideClass) {
@@ -264,8 +264,8 @@ public class DelegatingMetaClass implements MetaClass, MutableMetaClass, GroovyO
             return getMetaClass().invokeMethod(this, name, args);
         }
         catch (MissingMethodException e) {
-            if (delegate instanceof GroovyObject)
-                return ((GroovyObject) delegate).invokeMethod(name, args);
+            if (delegate instanceof GroovyMotherOfAllObjects)
+                return ((GroovyMotherOfAllObjects) delegate).invokeMethod(name, args);
             else
                 throw e;
         }
@@ -276,8 +276,8 @@ public class DelegatingMetaClass implements MetaClass, MutableMetaClass, GroovyO
             return getMetaClass().getProperty(this, property);
         }
         catch (MissingPropertyException e) {
-            if (delegate instanceof GroovyObject)
-                return ((GroovyObject) delegate).getProperty(property);
+            if (delegate instanceof GroovyMotherOfAllObjects)
+                return ((GroovyMotherOfAllObjects) delegate).getProperty(property);
             else
                 throw e;
         }
@@ -288,8 +288,8 @@ public class DelegatingMetaClass implements MetaClass, MutableMetaClass, GroovyO
             getMetaClass().setProperty(this, property, newValue);
         }
         catch (MissingPropertyException e) {
-            if (delegate instanceof GroovyObject)
-                ((GroovyObject) delegate).setProperty(property, newValue);
+            if (delegate instanceof GroovyMotherOfAllObjects)
+                ((GroovyMotherOfAllObjects) delegate).setProperty(property, newValue);
             else
                 throw e;
         }

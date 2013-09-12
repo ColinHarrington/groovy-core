@@ -17,7 +17,7 @@ package groovy.xml.streamingmarkupsupport;
 
 import groovy.lang.Closure;
 import groovy.lang.GroovyInterceptable;
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -71,7 +71,7 @@ public class BaseMarkupBuilder extends Builder {
             });
         }
 
-        private abstract class OutputSink extends GroovyObjectSupport {
+        private abstract class OutputSink extends GroovyMotherOfAllObjectsSupport {
             private final String name;
 
             public OutputSink(final String name) {

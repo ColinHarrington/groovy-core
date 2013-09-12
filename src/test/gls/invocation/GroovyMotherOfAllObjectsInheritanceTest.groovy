@@ -17,7 +17,7 @@ package gls.invocation
 
 import gls.CompilableTestSupport
 
-class GroovyObjectInheritanceTest extends CompilableTestSupport {
+class GroovyMotherOfAllObjectsInheritanceTest extends CompilableTestSupport {
   void testInheritanceWithGetProperty() {
     assertScript """
         class Foo {

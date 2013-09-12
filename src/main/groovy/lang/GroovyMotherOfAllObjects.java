@@ -24,7 +24,7 @@ package groovy.lang;
  * @author <a href="mailto:james@coredevelopers.net">James Strachan</a>
  * @version $Revision$
  */
-public interface GroovyObject {
+public interface GroovyMotherOfAllObjects {
 
     /**
      * Invokes the given method.

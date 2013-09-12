@@ -129,27 +129,27 @@ public class AbstractCallSite implements CallSite {
     }
 
 
-    public Object callCurrent(GroovyObject receiver, Object[] args) throws Throwable {
+    public Object callCurrent(GroovyMotherOfAllObjects receiver, Object[] args) throws Throwable {
         return CallSiteArray.defaultCallCurrent(this, receiver, args);
     }
 
-    public Object callCurrent(GroovyObject receiver) throws Throwable {
+    public Object callCurrent(GroovyMotherOfAllObjects receiver) throws Throwable {
         return callCurrent(receiver, CallSiteArray.NOPARAM);
     }
 
-    public Object callCurrent(GroovyObject receiver, Object arg1) throws Throwable {
+    public Object callCurrent(GroovyMotherOfAllObjects receiver, Object arg1) throws Throwable {
         return callCurrent(receiver, ArrayUtil.createArray(arg1));
     }
 
-    public Object callCurrent(GroovyObject receiver, Object arg1, Object arg2) throws Throwable {
+    public Object callCurrent(GroovyMotherOfAllObjects receiver, Object arg1, Object arg2) throws Throwable {
         return callCurrent(receiver, ArrayUtil.createArray(arg1, arg2));
     }
 
-    public Object callCurrent(GroovyObject receiver, Object arg1, Object arg2, Object arg3) throws Throwable {
+    public Object callCurrent(GroovyMotherOfAllObjects receiver, Object arg1, Object arg2, Object arg3) throws Throwable {
         return callCurrent(receiver, ArrayUtil.createArray(arg1, arg2, arg3));
     }
 
-    public Object callCurrent(GroovyObject receiver, Object arg1, Object arg2, Object arg3, Object arg4) throws Throwable {
+    public Object callCurrent(GroovyMotherOfAllObjects receiver, Object arg1, Object arg2, Object arg3, Object arg4) throws Throwable {
         return callCurrent(receiver, ArrayUtil.createArray(arg1, arg2, arg3, arg4));
     }
 
@@ -242,7 +242,7 @@ public class AbstractCallSite implements CallSite {
     protected final CallSite createGetPropertySite(Object receiver) {
         if (receiver == null) {
             return new NullCallSite(this);
-        } else if (receiver instanceof GroovyObject) {
+        } else if (receiver instanceof GroovyMotherOfAllObjects) {
             return createGroovyObjectGetPropertySite(receiver);
         } else if (receiver instanceof Class) {
             return createClassMetaClassGetPropertySite((Class) receiver);
@@ -254,8 +254,8 @@ public class AbstractCallSite implements CallSite {
         Class aClass = receiver.getClass();
         try {
             final Method method = aClass.getMethod("getProperty", String.class);
-            if (method != null && method.isSynthetic() && ((GroovyObject) receiver).getMetaClass() instanceof MetaClassImpl)
-                return createPogoMetaClassGetPropertySite((GroovyObject) receiver);
+            if (method != null && method.isSynthetic() && ((GroovyMotherOfAllObjects) receiver).getMetaClass() instanceof MetaClassImpl)
+                return createPogoMetaClassGetPropertySite((GroovyMotherOfAllObjects) receiver);
         } catch (NoSuchMethodException e) {
             // fall threw
         }
@@ -298,7 +298,7 @@ public class AbstractCallSite implements CallSite {
         return site;
     }
 
-    private CallSite createPogoMetaClassGetPropertySite(GroovyObject receiver) {
+    private CallSite createPogoMetaClassGetPropertySite(GroovyMotherOfAllObjects receiver) {
         MetaClass metaClass = receiver.getMetaClass();
 
         CallSite site;

@@ -16,7 +16,7 @@
 package groovy.sql;
 
 import groovy.lang.Closure;
-import groovy.lang.GroovyObjectSupport;
+import groovy.lang.GroovyMotherOfAllObjectsSupport;
 import groovy.lang.MissingPropertyException;
 
 import java.sql.ResultSet;
@@ -42,7 +42,7 @@ import org.codehaus.groovy.runtime.InvokerInvocationException;
  * @see GroovyResultSet
  * @see GroovyResultSetProxy
  */
-public class GroovyResultSetExtension extends GroovyObjectSupport {
+public class GroovyResultSetExtension extends GroovyMotherOfAllObjectsSupport {
 
     private boolean updated;
     private final ResultSet resultSet;
@@ -108,7 +108,7 @@ public class GroovyResultSetExtension extends GroovyObjectSupport {
      * @param columnName the SQL name of the column
      * @return the returned column value
      * @throws MissingPropertyException if an SQLException happens while getting the object
-     * @see groovy.lang.GroovyObject#getProperty(java.lang.String)
+     * @see groovy.lang.GroovyMotherOfAllObjects#getProperty(java.lang.String)
      * @see ResultSet#getObject(java.lang.String)
      */
     public Object getProperty(String columnName) {
@@ -126,7 +126,7 @@ public class GroovyResultSetExtension extends GroovyObjectSupport {
      * @param columnName the SQL name of the column
      * @param newValue   the updated value
      * @throws MissingPropertyException if an SQLException happens while setting the new value
-     * @see groovy.lang.GroovyObject#setProperty(java.lang.String, java.lang.Object)
+     * @see groovy.lang.GroovyMotherOfAllObjects#setProperty(java.lang.String, java.lang.Object)
      * @see ResultSet#updateObject(java.lang.String, java.lang.Object)
      */
     public void setProperty(String columnName, Object newValue) {
